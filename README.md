@@ -12,13 +12,13 @@
         <section id="js-assignments">
             <h2>HTML Assignments</h2>
             <ul>
-                <li><a href="">Assignment 1:</a></li>
-                <li><a href="">Assignment 2:</a></li>
-                <li><a href="">Assignment 3:</a></li>
-                <li><a href="">Assignment 4:</a></li>
-                <li><a href="">Assignment 5:</a></li>
-                <li><a href="">Assignment 6:</a></li>
-                <li><a href="">Assignment 7:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_1/">Assignment 1:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_2/">Assignment 2:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_3/">Assignment 3:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_4/">Assignment 4:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_5/">Assignment 5:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_6/">Assignment 6:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_7/">Assignment 7:</a></li>
             </ul>
         </section>
     </main>
