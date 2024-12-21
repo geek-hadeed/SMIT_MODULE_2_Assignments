@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9a77fc;
+            text-align: center;
+            color: #00226b;
+        }
+
+        h1{
+            text-align: center;
+            color: beige;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> Fashion Store</h1>
+    <h2>Welcome to Our Fashion Store</h2>
+
+    <script>
+        let name = prompt("Whats Your Name")
+        alert("Hello, " + name + "! Welcome to our fashion store.")
+
+        let product = prompt("What Do You Want To Order")
+        let quantity = prompt(`How Many ${product} do you want`)
+
+        document.write(`${name},You Have Successfully Orderd ${quantity} ${product}`)
+        
+        </script>
+</body>
+</html>
