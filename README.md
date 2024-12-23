@@ -2,7 +2,7 @@
   <center>
         <h1>SMIT Assignments</h1>
   </center>
-        <p>A collection of completed 2<sup>nd</sup> assignments from the Saylani Mass IT Training (SMIT) program.</p>
+        <p>A collection of completed 2<sup>nd</sup> Module Assignments Given from the Saylani Mass IT Training (SMIT) program.</p>
 </header>
 <main>
         <section id="about">
