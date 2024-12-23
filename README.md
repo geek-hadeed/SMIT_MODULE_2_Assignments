@@ -10,7 +10,7 @@
             <p>This repository contains a comprehensive collection of Js assignments completed during my time at SMIT. The assignments showcase my skills and knowledge in building responsive and visually appealing web pages.</p>
         </section>
         <section id="js-assignments">
-            <h2>HTML Assignments</h2>
+            <h2>JS Assignments</h2>
             <ul>
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_1/">Assignment 1:</a></li>
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_2/">Assignment 2:</a></li>
