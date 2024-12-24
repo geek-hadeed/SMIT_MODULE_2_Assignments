@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question-6</title>
+
+    <style>
+
+        h1{
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+        let subject1 = prompt("Enter First Subject's Name","English")
+        let subject2 = prompt("Enter Second Subject's Name","Urdu")
+        let subject3 = prompt("Enter Third Subject's Name","Chemistry")
+
+        let maxMarks = 100;
+
+        let marks1 = +prompt(`Enter Marks for ${subject1}`);
+        let marks2 = +prompt(`Enter Marks for ${subject2}`);
+        let marks3 = +prompt(`Enter Marks for ${subject3}`);
+
+        let Percentage = ((marks1 + marks2 + marks3) / (maxMarks * 3)) * 100;
+
+
+        document.write(`
+        <h1>Subject Total Marks Obtained Marks Percentage</h1>
+<table>
+
+<tr>
+<th>Subject</th>
+<th>Total Marks</th>
+<th>Obtained Marks</th>
+<th>Percentage</th>
+</tr>
+
+<tr>
+<td>${subject1}</td>
+<td>${maxMarks}</td>
+<td>${marks1}</td>
+<td>${marks1}%</td>
+</tr>
+
+<tr>
+<td>${subject2}</td>
+<td>${maxMarks}</td>
+<td>${marks2}</td>
+<td>${marks2}%</td>
+</tr>
+
+<tr>
+<td>${subject3}</td>
+<td>${maxMarks}</td>
+<td>${marks3}</td>
+<td>${marks3}%</td>
+</tr>
+
+<tr>
+<td></td>
+<td>${maxMarks * 3}</td>
+<td>${marks1 + marks2 + marks3}</td>
+<td>${Percentage}%</td>
+</tr>
+</table>
+        `)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let a = 2, b = 1;
+
+        document.write(`The Value Of a Is ${a} And b Is ${b} <br><br>`)
+        document.write("We Have To Find --a - --b + ++b + b-- <br><br>")
+
+        let preDecrementA = --a;
+        document.write(`After --a Now a = ${preDecrementA} <br>`)
+
+        let preDecrementB = --b;
+        document.write(`After --b Now b = ${preDecrementB} <br>`)
+
+        let preIncrementB = ++b;
+        document.write(`After ++b Now b = ${preIncrementB} <br>`)
+
+        let postDecrementB = b--;
+        document.write(`After b-- Now b = ${preDecrementB} <br><br><br>`)
+
+        let result = --a - --b + ++b + b--;
+
+        document.write(`The Result Is ${result}`)
+
+    </script>
+
+</body>
+
+</html>
