@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-7</title>
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Assignemnt-7</h1>
+    <script>
+        let city = prompt("Enter the name of the city: ");
+        if (city == "Karachi") {
+            alert("Welcome to the city of lights");
+        }
+
+        else if (city == "Lahore") {
+            alert("Welcome to the city of dreams");
+        }
+
+        else if (city == "Islamabad") {
+            alert("Welcome to the capital of Pakistan");
+        }
+
+        else if (city == "Peshawar") {
+            alert("Welcome to the city of Flowers");
+        }
+
+        else {
+            alert("Welcome to " + city);
+        }
+
+        let gender = prompt("Enter Your Gender: ");
+
+        if (gender == "male") {
+            alert("Hello, Sir");
+        }
+        else if (gender == "female") {
+            alert("Hello, Madam");
+        }
+        else {
+            alert("Hello, User,PLease Enter Valid Gender");
+        }
+
+        let color = prompt("Enter the color of the traffic signal: ");
+        if (color == "red") {
+            alert("Stop");
+        }
+        else if (color == "yellow") {
+            alert("Warning");
+        }
+        else if (color == "green") {
+            alert("Go");
+        }
+        else {
+            alert("Please Enter Valid Color");
+        }
+
+        let fuel = prompt("Enter the remaining fuel in the car: ");
+
+        if (fuel < 0.25) {
+            alert("Please refill the fuel in your car");
+        }
+        else {
+            alert("You have enough fuel in your car");
+        }
+
+        let subject1 = prompt("Enter First Subject's Name", "English")
+        let subject2 = prompt("Enter Second Subject's Name", "Urdu")
+        let subject3 = prompt("Enter Third Subject's Name", "Chemistry")
+
+        let maxMarks = 100;
+
+        let marks1 = +prompt(`Enter Marks for ${subject1}`);
+        let marks2 = +prompt(`Enter Marks for ${subject2}`);
+        let marks3 = +prompt(`Enter Marks for ${subject3}`);
+
+        let Percentage = ((marks1 + marks2 + marks3) / (maxMarks * 3)) * 100;
+
+        let regard = "D Grade";
+
+        if (Percentage >= 80) {
+            let regard = "A-one Grade";
+        }
+        else if (Percentage >= 70) {
+            regard = "A Grade";
+        }
+        else if (Percentage >= 60) {
+            regard = "B Grade";
+        }
+        else if (Percentage < 60) {
+            regard = "Fail";
+        }
+
+        document.write(`
+        <table>
+
+            <tr>
+                <th>Subject</th>
+                <th>Total Marks</th>
+                <th>Obtained Marks</th>
+                <th>Percentage</th>
+            </tr>
+
+            <tr>
+                <td>${subject1}</td>
+                <td>${maxMarks}</td>
+                <td>${marks1}</td>
+                <td>${marks1}%</td>
+            </tr>
+
+            <tr>
+                <td>${subject2}</td>
+                <td>${maxMarks}</td>
+                <td>${marks2}</td>
+                <td>${marks2}%</td>
+            </tr>
+
+            <tr>
+                <td>${subject3}</td>
+                <td>${maxMarks}</td>
+                <td>${marks3}</td>
+                <td>${marks3}%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>${maxMarks * 3}</td>
+                <td>${marks1 + marks2 + marks3}</td>
+                <td>${Percentage}%</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2">${regard}</td>
+        </table>
+        `);
+
+    </script>
+
+</body>
+
+</html>
