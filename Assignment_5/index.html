@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Paisa App</title>
+</head>
+
+<body>
+    <h1>Easy Paisa App</h1>
+    <script>
+        let balance = 2000;
+        let name = prompt("What is your name?");
+        alert(`Hello! ${name} 👋 Welcome To My Easy Paisa 📱 App`);
+
+        let operation = prompt("What would you like to do?\n1. Transfer Money\n2. Receive Money\n3. Pay Bill\n4. Cashbacks\n5. Easy Paisa Bundles\n6. Exit");
+
+        if (operation === "1") {
+            let transferAmount = prompt("How much would you like to transfer?");
+            let transferNum = prompt("To whom You Want To Send This Money? Enter Number:");
+
+            if (transferNum.length >= 11) {
+                if (transferAmount > balance) {
+                    alert("Insufficient Balance");
+                } else {
+                    balance -= transferAmount;
+                    alert(`After transferring ${transferAmount}, your updated balance is ${balance}`);
+                }
+            } else {
+                alert("Invalid Number");
+            }
+        } else if (operation === "2") {
+            let receiveAmount = p(prompt("How much would you like to receive?"));
+            let receiveNum = prompt("From whom You Want To Get This Money? Enter Number:");
+
+            if (receiveNum.length >= 11) {
+                balance += receiveAmount;
+                alert(`After receiving ${receiveAmount}, your updated balance is ${balance}`);
+            } else {
+                alert("Invalid Number");
+            }
+        } else if (operation === "3") {
+            let billType = prompt("Which bill would you like to pay?\n1. Electricity\n2. Gas\n3. Water\n4. Internet");
+
+            let billAmount = 0;
+            if (billType === "1") {
+                billAmount = 2500;
+            } else if (billType === "2") {
+                billAmount = 970;
+            } else if (billType === "3") {
+                billAmount = 250;
+            } else if (billType === "4") {
+                billAmount = 3500;
+            } else {
+                alert("Invalid choice");
+            }
+
+            if (billAmount > 0) {
+                let accountNumber = prompt("Enter your account or meter number:");
+
+                if (accountNumber.length >= 11) {
+                    if (billAmount > balance) {
+                        alert("Insufficient Balance");
+                    } else {
+                        balance -= billAmount;
+                        alert(`After paying a bill of ${billAmount}, your updated balance is ${balance}`);
+                    }
+                } else {
+                    alert("Invalid Account/Meter Number");
+                }
+            }
+        } else if (operation === "4") {
+            let cashback = 0.2 * balance;
+            alert(`Your cashback is ${cashback}`);
+        } else if (operation === "5") {
+            alert("For now, I haven't added any bundles.");
+        } else if (operation === "6") {
+            alert("Exiting...");
+        } else {
+            alert("Invalid operation.");
+        }
+    </script>
+</body>
+
+</html>
