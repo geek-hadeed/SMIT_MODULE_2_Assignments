@@ -10,11 +10,11 @@
 <body>
     <h1>Easy Paisa App</h1>
     <script>
-        let balance = 2000;
+        let balance = 5000;
         let name = prompt("What is your name?");
         alert(`Hello! ${name} 👋 Welcome To My Easy Paisa 📱 App`);
 
-        let operation = prompt("What would you like to do?\n1. Transfer Money\n2. Receive Money\n3. Pay Bill\n4. Cashbacks\n5. Easy Paisa Bundles\n6. Exit");
+        let operation = prompt("What would you like to do?\n1. Transfer Money\n2. Receive Money\n3. Pay Bill\n4. Cashbacks\n5. Easy Paisa Bundles\n6. Check You Current Balance\n7. Exit");
 
         if (operation === "1") {
             let transferAmount = prompt("How much would you like to transfer?");
@@ -61,7 +61,7 @@
 
                 if (accountNumber.length >= 11) {
                     if (billAmount > balance) {
-                        alert("Insufficient Balance");
+                        alert(`Insufficient Balance.Your Current Balance Is ${balance}`);
                     } else {
                         balance -= billAmount;
                         alert(`After paying a bill of ${billAmount}, your updated balance is ${balance}`);
@@ -75,7 +75,11 @@
             alert(`Your cashback is ${cashback}`);
         } else if (operation === "5") {
             alert("For now, I haven't added any bundles.");
-        } else if (operation === "6") {
+        } 
+            else if (operation === "6") {
+            alert(`Your Current Balance Is ${balance}`);
+        } 
+        else if (operation === "7") {
             alert("Exiting...");
         } else {
             alert("Invalid operation.");
