@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Check</title>
+</head>
+
+<body>
+    <script>
+        let input = prompt("Enter a character: ");
+        if (input.length != 0 && input.length < 2) {
+            if (input >= 'a' && input <= 'z') {
+                alert("Its a Lowercase Letter");
+            } else if (input >= 'A' && input <= 'Z') {
+                alert("Its a Uppercase Letter");
+            } else if (input >= '0') {
+                alert("Its a number");
+            } else {
+                alert("It a Special Character");
+            }
+        }
+        else if (input.length > 1) {
+            alert("Please Enter Single Character");
+        }
+    </script>
+</body>
+
+</html>

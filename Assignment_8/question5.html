@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tell Me The Password</title>
+</head>
+
+<body>
+    <script>
+        let password = 1234
+        let pass = prompt("Enter Your Password")
+        if(pass.length != 0){
+            if(pass === password){
+                alert("Acess Granted")
+            }
+            else{
+                alert("Acess Denied")
+            }
+        }
+        else{
+            alert("Enter Your Password")
+        }
+    </script>
+</body>
+
+</html>

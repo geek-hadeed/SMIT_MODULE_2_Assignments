@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Is larger</title>
+</head>
+
+<body>
+    <script>
+        let input1 = +prompt("Enter A number")
+        let input2 = +prompt("Enter A number")
+        if (input1 !== 0 && input2 !== 0) {
+            if (input1 > input2) {
+                alert(`${input1} Is Greater Than ${input2}.`)
+            }
+            else if (input2 > input1) {
+                alert(`${input2} Is Greater Than ${input1}.`)
+            }
+            else if (input1 == input2){
+                alert(`${input2} Is Equal To ${input1}.`)
+            }
+            else{
+                alert(NaN)
+            }
+        }
+    </script>
+</body>
+
+</html>
