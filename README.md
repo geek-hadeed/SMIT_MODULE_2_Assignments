@@ -20,6 +20,8 @@
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_6/">Assignment 6:</a></li>
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_7/">Assignment 7:</a></li>
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_8/">Assignment 8:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_9/">Assignment 9:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_10/">Assignment 10:</a></li>
             </ul>
         </section>
     </main>
