@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakWheels</title>
+</head>
+
+<body>
+    <script>
+
+        // Q1
+        let studentNames = [];
+        // Q2
+        let studentNames1 = new Array();
+        // Q3
+        let names = ["Hadeed", "Hussain", "Morai"]
+        // Q4
+        let num = [11, 18, 2007]
+        // Q5
+        let bool = [true, false, true]
+        // Q6
+        let student = ["Hadeed", 11, true]
+        // Q7
+        let education = ["SSC", "HSC", "BCS", "BS", "BCOM", "MS", "M.", "Phil.", "PhD"]
+
+        for (let i = 0; i < education.length; i++) {
+            document.write(`${i + 1}) ${education[i]} <br>`)
+        }
+
+        document.write("<br><br><br>")
+
+        // Q8
+        let studentNames2 = ["Hadeed", "Hussain", "Morai"]
+        let studentScores = [320, 230, 480]
+        let totalMarks = 500
+        for (let i = 0; i < studentNames2.length; i++) {
+            let percentage = (studentScores[i] / totalMarks) * 100;
+            document.write(`Score of ${studentNames2[i]} is ${percentage}% <br>`)
+        }
+
+        document.write("<br><br><br>")
+
+        // Q9
+
+        let colors = ["Red", "Green", "Blue", "Yellow"];
+        document.write(`<h3>Initial Colors: ${colors.join(", ")}</h3>`);
+
+        let colorToAddBeginning = prompt("Enter a color to add to the beginning of the array:");
+        colors.unshift(colorToAddBeginning);
+        document.write(`<h3>After Adding '${colorToAddBeginning}' to the Beginning: ${colors.join(", ")}</h3>`);
+
+        let colorToAddEnd = prompt("Enter a color to add to the end of the array:");
+        colors.push(colorToAddEnd);
+        document.write(`<h3>After Adding '${colorToAddEnd}' to the End: ${colors.join(", ")}</h3>`);
+
+        colors.unshift("Pink", "Purple");
+        document.write(`<h3>After Adding 'Pink' and 'Purple' to the Beginning: ${colors.join(", ")}</h3>`);
+
+        colors.shift();
+        document.write(`<h3>After Removing the First Color: ${colors.join(", ")}</h3>`);
+
+        colors.pop();
+        document.write(`<h3>After Removing the Last Color: ${colors.join(", ")}</h3>`);
+
+        let index = prompt("Enter the index at which you want to add a color:");
+        let colorToAdd = prompt("Enter the color name to add at the specified index:");
+        colors.splice(index, 0, colorToAdd);
+        document.write(`<h3>After Adding '${colorToAdd}' at Index ${index}: ${colors.join(", ")}</h3>`);
+
+        let indexToDelete = prompt("Enter the index from where you want to delete color(s):");
+        let numberOfColorsToDelete = prompt("Enter the number of colors to delete:");
+        colors.splice(indexToDelete, numberOfColorsToDelete);
+        document.write(`<h3>After Deleting ${numberOfColorsToDelete} Color(s) from Index ${indexToDelete}: ${colors.join(", ")}</h3>`);
+
+
+        document.write("<br><br><br>")
+
+        // Q10
+
+        let studentScores1 = [85, 92, 78, 64, 89, 76, 95];
+        document.write(`<h3>Original Scores: ${studentScores1.join(", ")}</h3>`);
+
+        studentScores.sort((a, b) => a - b);
+        document.write(`<h3>Sorted Scores in Ascending Order: ${studentScores1.join(", ")}</h3>`);
+
+
+        document.write("<br><br><br>")
+
+        // Q11
+
+        let cities = ["Karachi", "Lahore", "Islamabad", "Quetta", "Peshawar"];
+        let selectedCities = cities.slice(2, 4);
+        document.write(`<h3>Selected Cities: ${selectedCities.join(", ")}</h3>`);
+
+        document.write("<br><br><br>")
+
+        // Q12
+
+        let arr = ["This", "is", "my", "cat"];
+        document.write(`<h3> Original Array: ${arr}</h3>`);
+        document.write(`<h3>String Joined Array: ${arr.join(" ")}</h3>`);
+
+        document.write("<br><br><br>")
+
+        // Q15
+
+        let phoneManufacturers = ["Apple", "Samsung", "Motorola", "Nokia", "Sony", "Haier"];
+        document.write(`<h3>Phone Manufacturers:</h3>`);
+        for (let i = 0; i < phoneManufacturers.length; i++) {
+            document.write(`${i + 1}) ${phoneManufacturers[i]} <br>`)
+        }
+    </script>
+</body>
+
+</html>
