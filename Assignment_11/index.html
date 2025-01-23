@@ -6,19 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Changer</title>
     <style>
-        h1{
+        h1 {
             text-align: center;
             font-size: 35px;
             font-weight: bold;
             color: #333;
         }
-        div{
-            margin: 50px auto ;
+
+        div {
+            margin: 50px auto;
             padding: 30px 20px;
             width: 30%;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         button {
             margin-top: 40px;
             width: 100%;
@@ -38,12 +40,12 @@
 <body>
     <div>
         <h1>Case Changer</h1>
-        <button onclick="convertToLowerCase(para)">Click Here To Convert Paragraph To Lower Case</button>
-        <button onclick="convertToUpperCase(para)">Click Here To Convert Paragraph To Upper Case</button>
-        <button onclick="convertToCapitalCase(para)">Click Here To Convert Paragraph To Capital Case</button>
+        <button onclick="convertToLowerCase(para)">To Lower Case</button>
+        <button onclick="convertToUpperCase(para)">To Upper Case</button>
+        <button onclick="convertToCapitalCase(para)">To Capital Case</button>
     </div>
     <script>
-        let para = prompt("Enter a paragraph");
+        let para = prompt("Enter a paragraph").trim();
 
         function convertToLowerCase(text) {
             console.log(text.toLowerCase());
@@ -54,14 +56,15 @@
         }
 
         function convertToCapitalCase(text) {
-            let words = text.split(" ");
+
+            let words = text.split(/\s+/);
             let newWords = [];
             for (let i = 0; i < words.length; i++) {
-                newWords.push(words[i][0].toUpperCase() + words[i].slice(1).toLowerCase());
+                let word = words[i];
+                newWords.push(word[0].toUpperCase() + word.slice(1).toLowerCase());
             }
             console.log(newWords.join(" "));
         }
-
 
     </script>
 </body>
