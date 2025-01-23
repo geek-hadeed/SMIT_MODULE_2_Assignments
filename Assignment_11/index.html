@@ -4,22 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PakWheels</title>
+    <title>Case Changer</title>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold;
+            color: #333;
+        }
+        div{
+            margin: 50px auto ;
+            padding: 30px 20px;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin-top: 40px;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            height: 10vh;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            border-radius: 15px;
+        }
+    </style>
 </head>
 
 <body>
+    <div>
+        <h1>Case Changer</h1>
+        <button onclick="convertToLowerCase(para)">Click Here To Convert Paragraph To Lower Case</button>
+        <button onclick="convertToUpperCase(para)">Click Here To Convert Paragraph To Upper Case</button>
+        <button onclick="convertToCapitalCase(para)">Click Here To Convert Paragraph To Capital Case</button>
+    </div>
     <script>
-        let num = [1, 2, 3, 7, 8, 9, 2, 3, 4]
-        let sorted = [0]
-        for (let i = 0; sorted.length < num.length; i++) {
-            for (let j = 0; j < num.length; j++) {
-                if (num[i] < num[j + 1]) {
-                    sorted.push(num[i])
-                }
-            }
+        let para = prompt("Enter a paragraph");
+
+        function convertToLowerCase(text) {
+            console.log(text.toLowerCase());
         }
 
-        console.log(sorted)
+        function convertToUpperCase(text) {
+            console.log(text.toUpperCase());
+        }
+
+        function convertToCapitalCase(text) {
+            let words = text.split(" ");
+            let newWords = [];
+            for (let i = 0; i < words.length; i++) {
+                newWords.push(words[i][0].toUpperCase() + words[i].slice(1).toLowerCase());
+            }
+            console.log(newWords.join(" "));
+        }
+
+
     </script>
 </body>
 
