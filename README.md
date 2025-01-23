@@ -12,16 +12,17 @@
         <section id="js-assignments">
             <h2>JS Assignments</h2>
             <ul>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_1/">Assignment 1:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_2/">Assignment 2:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_3/">Assignment 3:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_4/">Assignment 4:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_5/">Assignment 5:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_6/">Assignment 6:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_7/">Assignment 7:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_8/">Assignment 8:</a></li>
-                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_9/">Assignment 9:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_01/">Assignment 1:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_02/">Assignment 2:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_03/">Assignment 3:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_04/">Assignment 4:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_05/">Assignment 5:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_06/">Assignment 6:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_07/">Assignment 7:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_08/">Assignment 8:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_09/">Assignment 9:</a></li>
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_10/">Assignment 10:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_11/">Assignment 11:</a></li>
             </ul>
         </section>
     </main>
