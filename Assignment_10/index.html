@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakWheels</title>
+</head>
+
+<body>
+    <script>
+        let num = [1, 2, 3, 7, 8, 9, 2, 3, 4]
+        let sorted = [0]
+        for (let i = 0; sorted.length < num.length; i++) {
+            for (let j = 0; j < num.length; j++) {
+                if (num[i] < num[j + 1]) {
+                    sorted.push(num[i])
+                }
+            }
+        }
+
+        console.log(sorted)
+    </script>
+</body>
+
+</html>
