@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 5vh;
+            color: #333;
+        }
+
+        #container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 5vh;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 45vh;
+            width: 34%;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        h2 {
+            margin-top: 4vh;
+            color: #333;
+        }
+
+        h3 {
+            color: #666;
+        }
+
+        h5 {
+            color: #040925;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Password Generator</h1>
+    <div id="container">
+        <div class="card">
+            <h2>Alphabetic Password Generator</h2>
+            <h3>Password Length: <span id="length"> </span></h3>
+            <button onclick="generate()">Generate Password</button>
+            <h5 id="pass">_________________</h5>
+        </div>
+        <div class="card">
+            <h2>Numeric Password Generator</h2>
+            <h3>Password Length: <span id="length1"> </span></h3>
+            <button onclick="generate1()">Generate Password</button>
+            <h5 id="pass1">_________________</h5>
+        </div>
+        <div class="card">
+            <h2>Mix Password Generator</h2>
+            <h3>Password Length: <span id="length2"> </span></h3>
+            <button onclick="generate2()">Generate Password</button>
+            <h5 id="pass2">_________________</h5>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
