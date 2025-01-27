@@ -23,6 +23,7 @@
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_09/">Assignment 9:</a></li>
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_10/">Assignment 10:</a></li>
                 <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_11/">Assignment 11:</a></li>
+                <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_12/">Assignment 12:</a></li>
             </ul>
         </section>
     </main>
