@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .result-box {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        h3 {
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 0;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Age Calculator</h1>
+
+        <div class="result-box">
+            <h3>Date of Birth</h3>
+            <p id="dob">_____________</p>
+
+            <h3>Age</h3>
+            <p id="age">_____________</p>
+
+            <h3>Months</h3>
+            <p id="months">_____________</p>
+
+            <h3>Days</h3>
+            <p id="days">_____________</p>
+
+            <h3>Hours</h3>
+            <p id="hours">_____________</p>
+
+            <h3>Minutes</h3>
+            <p id="minutes">_____________</p>
+
+            <h3>Seconds</h3>
+            <p id="seconds">_____________</p>
+        </div>
+
+        <button onclick="calculateAge(prompt('Enter your year of birth') ,prompt('Enter your month of birth'),prompt('Enter your day of birth'))">Calculate Age</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
