@@ -2,7 +2,7 @@
   <center>
         <h1>SMIT Assignments</h1>
   </center>
-        <p>A collection of completed 2<sup>nd</sup> Module Assignments Given from the Saylani Mass IT Training (SMIT) program.</p>
+        <p>A collection of completed 2<sup>nd</sup> Module Assignments Given By <a href="https://www.linkedin.com/in/rizwanbhatti15/">Sir Rizwan Bhatti</a> In the Saylani Mass IT Training (SMIT) program.</p>
 </header>
 <main>
         <section id="about">
