@@ -38,13 +38,32 @@
         #result span {
             font-weight: bold;
         }
+
+        @media (max-width: 768px) {
+            #keydown-message {
+                display: none;
+            }
+
+            #inputField {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-top: 20px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            #inputField {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
         <h1>Press Any Key</h1>
-
+        <input type="text" id="inputField" placeholder="Type a letter..." />
         <div id="result">
             <div>Name: <span id="name"></span></div>
             <div>Animal: <span id="animal"></span></div>
