@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Country</title>
+    <title>Name Place Animal Thing</title>
     <style>
         #container {
             max-width: 80%;
             margin: 0 auto;
         }
+
         body {
             font-family: Arial, sans-serif;
         }
@@ -23,27 +24,34 @@
             text-align: center;
             margin-bottom: 20px;
             border: 1px solid #333;
-            padding: 20px;
+            padding: 10px;
             border-radius: 5px;
             background-color: #f4f4f4;
             color: #333;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        #result p {
-            font-size: 20px;
+        #result div {
+            margin-top: 10px;
+        }
+
+        #result span {
             font-weight: bold;
-            color: #333;
         }
     </style>
 </head>
 
 <body>
     <div id="container">
-        <h1>Press Any Key To Find Random Country Names</h1>
-        <div id="result"></div>
-    </div>
+        <h1>Press Any Key</h1>
 
+        <div id="result">
+            <div>Name: <span id="name"></span></div>
+            <div>Animal: <span id="animal"></span></div>
+            <div>Place: <span id="place"></span></div>
+            <div>Thing: <span id="thing"></span></div>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 
