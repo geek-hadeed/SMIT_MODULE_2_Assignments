@@ -10,6 +10,7 @@ let named = document.getElementById("name")
 let place = document.getElementById("place")
 let animal = document.getElementById("animal")
 let thing = document.getElementById("thing")
+let inputField = document.getElementById("inputField");
 
 function updateResults(key) {
     names = []
