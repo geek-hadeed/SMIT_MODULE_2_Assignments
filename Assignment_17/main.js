@@ -11,8 +11,7 @@ let place = document.getElementById("place")
 let animal = document.getElementById("animal")
 let thing = document.getElementById("thing")
 
-addEventListener('keydown', (event) => {
-    let key = event.key.toUpperCase();
+function updateResults(key) {
     names = []
     places = []
     animals = []
@@ -46,4 +45,18 @@ addEventListener('keydown', (event) => {
     place.innerHTML = randomPlace
     animal.innerHTML = randomAnimal
     thing.innerHTML = randomThing
-})
+}
+
+
+
+addEventListener('keydown', (event) => {
+    let key = event.key.toUpperCase();
+    updateResults(key);
+});
+
+inputField.addEventListener('input', (event) => {
+    let key = event.target.value.charAt(0).toUpperCase();
+    if (key) {
+        updateResults(key);
+    }
+});
