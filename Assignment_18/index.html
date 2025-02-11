@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll The Dice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #dice1,
+        #dice2 {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            font-size: 24px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            #dice1,
+            #dice2 {
+                width: 50px;
+                height: 50px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 5px;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Roll The Dice</h1>
+    <p>Click the button to roll the dice.</p>
+    <button onclick="rollDice()">Roll the Dice</button>
+    <div class="images">
+        <img src="images/0.png" alt="" id="dice1">
+        <img src="images/0.png" alt="" id="dice2">
+    </div>
+    <script>
+        function rollDice() {
+            var dice1 = document.getElementById("dice1");
+            var dice2 = document.getElementById("dice2");
+            var dice = document.getElementById("dice");
+
+            dice1.src = null
+            dice1.src = null
+            var randomNumber1 = Math.floor(Math.random() * 6) + 1;
+            var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+            dice1.src = "images/" + randomNumber1 + ".png";
+            dice2.src = "images/" + randomNumber2 + ".png";
+        }
+    </script>
+</body>
+
+</html>
