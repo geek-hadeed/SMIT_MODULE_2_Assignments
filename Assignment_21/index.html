@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #post-form {
+            display: none;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 500px;
+            transition: 0.3s ease-in-out;
+        }
+
+        #post-form h2 {
+            margin: 0 0 15px;
+            color: #222;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        #post-form label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        #post-form input[type="text"],
+        #post-form textarea {
+            padding: 12px;
+            margin-top: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            transition: 0.2s;
+        }
+
+        #post-form input[type="text"]:focus,
+        #post-form textarea:focus {
+            border-color: #007bff;
+            background-color: #fff;
+            outline: none;
+        }
+
+        #post-form textarea {
+            height: 120px;
+        }
+
+        #post-form input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #post-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Posts Section */
+        #posts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        #posts h2 {
+            width: 100%;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .post-item {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .post-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-item h3 {
+            margin: 0 0 10px;
+            color: #222;
+            font-size: 20px;
+        }
+
+        .post-item p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #post-form {
+                width: 95%;
+            }
+
+            .post-item {
+                width: 90%;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <button id="create" onclick="display()">Create New Post</button>
+
+
+    <div id="post-form">
+        <form action=" javascript:void(0)" onsubmit="post()" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <br>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" required></textarea>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="posts">
+        <h2>Posts</h2>
+    </div>
+
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
