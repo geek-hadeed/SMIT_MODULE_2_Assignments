@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #todo-form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        #todo-input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #todo-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #todo-form button:hover {
+            background-color: #555;
+        }
+
+        #todo-list li span button {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        #todo-list li .delete {
+            background-color: red;
+            color: white;
+        }
+
+        #todo-list li .edit {
+            background-color: green;
+            color: white;
+        }
+
+        #todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        #todo-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Todo-App</h1>
+        <form action="javascript:void(0)" id="todo-form" onsubmit="add()">
+            <input type="text" id="todo-input" placeholder="Enter your todo">
+            <button type="submit">Add</button>
+        </form>
+        <ul id="todo-list">
+        </ul>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
