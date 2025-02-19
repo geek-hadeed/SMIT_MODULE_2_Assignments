@@ -22,8 +22,8 @@ function post() {
 
     document.getElementById('posts').appendChild(postElement);
 
-    title = '';
-    content = '';
+   document.getElementById('title').value = '';
+    document.getElementById('content').value = '';
 
     let form = document.getElementById('post-form');
     form.style.display = 'none';
