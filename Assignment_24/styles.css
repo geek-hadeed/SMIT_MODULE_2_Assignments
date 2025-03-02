@@ -17,7 +17,7 @@ button {
     font-size: 20px;
 }
 #click-btn:disabled {
-    cursor: not-allowed;
+    cursor: pointer;
     opacity: 0.6;
 }
 #final-score {
