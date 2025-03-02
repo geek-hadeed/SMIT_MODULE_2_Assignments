@@ -1,41 +1,101 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    touch-action: manipulation;
+}
+
 .game-container {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 button {
-    padding: 10px 20px;
+    padding: 15px 30px;
     margin: 10px;
     cursor: pointer;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    touch-action: manipulation;
 }
-#timer {
+
+#click-btn {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
     font-size: 24px;
+    background: linear-gradient(145deg, #ff4b4b, #ff6b6b);
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
+}
+
+#click-btn:active {
+    transform: scale(0.95);
+}
+
+#click-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background: #cccccc;
+}
+
+#timer {
+    font-size: 28px;
     color: #ff0000;
     font-weight: bold;
+    margin: 10px 0;
 }
+
 #high-score {
     color: #0066cc;
-    font-size: 20px;
+    font-size: 24px;
+    margin: 10px 0;
 }
-#click-btn:disabled {
-    cursor: pointer;
-    opacity: 0.6;
+
+#score {
+    font-size: 32px;
+    margin: 15px 0;
 }
+
 #final-score {
-    font-size: 20px;
+    font-size: 24px;
     color: green;
     display: none;
+    margin: 15px 0;
 }
+
 #start-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    background: #4CAF50;
+    font-size: 20px;
+    padding: 15px 40px;
 }
+
 .new-high-score {
     color: #ff6600;
     font-weight: bold;
     animation: blink 1s infinite;
 }
+
 @keyframes blink {
     50% { opacity: 0.5; }
 }
