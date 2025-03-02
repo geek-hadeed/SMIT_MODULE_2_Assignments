@@ -1,0 +1,41 @@
+.game-container {
+    text-align: center;
+    margin-top: 50px;
+}
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+#timer {
+    font-size: 24px;
+    color: #ff0000;
+    font-weight: bold;
+}
+#high-score {
+    color: #0066cc;
+    font-size: 20px;
+}
+#click-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+#final-score {
+    font-size: 20px;
+    color: green;
+    display: none;
+}
+#start-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.new-high-score {
+    color: #ff6600;
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
