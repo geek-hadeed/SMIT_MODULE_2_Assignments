@@ -11,7 +11,7 @@
         }
 
         #container {
-            max-width: 500px;
+            max-width: 30rem;
             margin: 0 auto;
             padding: 20px;
         }
@@ -26,7 +26,7 @@
             margin-bottom: 20px;
         }
 
-        #todo-input {
+        #todoText {
             flex: 1;
             padding: 10px;
             font-size: 16px;
@@ -50,9 +50,9 @@
             background-color: #555;
         }
 
-        #todo-list li span button {
-            padding: 5px;
-            font-size: 16px;
+        #todoList li button {
+            padding: 7px;
+            font-size: 14px;
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -60,22 +60,22 @@
             margin-left: 10px;
         }
 
-        #todo-list li .delete {
+        #todoList li .del {
             background-color: red;
             color: white;
         }
 
-        #todo-list li .edit {
+        #todoList li .edit {
             background-color: green;
             color: white;
         }
 
-        #todo-list {
+        #todoList {
             list-style: none;
             padding: 0;
         }
 
-        #todo-list li {
+        #todoList li {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -91,10 +91,10 @@
     <div id="container">
         <h1>Todo-App</h1>
         <form action="javascript:void(0)" id="todo-form" onsubmit="add()">
-            <input type="text" id="todo-input" placeholder="Enter your todo">
+            <input type="text" id="todoText" placeholder="Enter your todo">
             <button type="submit">Add</button>
         </form>
-        <ul id="todo-list">
+        <ul id="todoList">
         </ul>
     </div>
     <script src="app.js"></script>
