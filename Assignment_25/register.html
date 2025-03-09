@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Now</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Form container */
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            width: 100%;
+            text-align: left;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Gender radio button styling */
+        .gender-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .gender-group label {
+            font-weight: normal;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Login link */
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Register</h1>
+        <form id="register-form">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" name="phone" id="phone" required>
+
+            <label>Gender:</label>
+            <div class="gender-group">
+                <input type="radio" name="gender" id="radio-male" value="male" required>
+                <label for="radio-male">Male</label>
+
+                <input type="radio" name="gender" id="radio-female" value="female">
+                <label for="radio-female">Female</label>
+
+                <input type="radio" name="gender" id="radio-other" value="other">
+                <label for="radio-other">Other</label>
+            </div>
+
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit">Register</button>
+
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let phone = document.getElementById('phone').value;
+            let gender = document.querySelector('input[name="gender"]:checked')?.value;
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            if (users.some(user => user.username === username)) {
+                alert("Username already taken. Choose another.");
+                return;
+            }
+
+            // Save new user
+            users.push({ name, email, phone, gender, username, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert('Registration Successful!');
+
+            document.getElementById('register-form').reset();
+            window.location.href = 'login.html';
+        });
+    </script>
+
+</body>
+
+</html>
