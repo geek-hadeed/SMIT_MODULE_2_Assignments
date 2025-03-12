@@ -9,11 +9,19 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #eef2f7;
+            background-image: url("Img/1.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        h1 {
+            color: #FF0025;
+            margin-bottom: 20px;
         }
 
         #post-form {
@@ -30,7 +38,7 @@
 
         #post-form h2 {
             margin: 0 0 15px;
-            color: #222;
+            color: #cec6c6;
             text-align: center;
             font-size: 22px;
         }
@@ -95,7 +103,7 @@
         #posts h2 {
             width: 100%;
             margin-bottom: 15px;
-            color: #333;
+            color: #00FFFF;
             text-align: center;
             font-size: 26px;
         }
@@ -162,6 +170,8 @@
 
 <body>
 
+    <h1></h1>
+
     <button id="create" onclick="display()">Create New Post</button>
 
 
@@ -177,17 +187,19 @@
         </form>
     </div>
 
+
+
     <div id="posts">
         <h2>Posts</h2>
     </div>
+
+    <button id="logout">Logout</button>
 
 
     <script>
         function display() {
             let form = document.getElementById('post-form');
             form.style.display = 'block';
-
-
         }
         function post() {
             const title = document.getElementById('title').value;
@@ -213,6 +225,14 @@
             let form = document.getElementById('post-form');
             form.style.display = 'none';
         }
+
+        let loggedInUser = localStorage.getItem('loggedInUser');
+        document.querySelector('h1').textContent = `Hello! ${loggedInUser}`;
+
+        let logout = document.getElementById('logout').addEventListener('click', function () {
+            window.location.href = 'login.html';
+            localStorage.removeItem('loggedInUser');
+        });
 
     </script>
 

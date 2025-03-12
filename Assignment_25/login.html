@@ -10,6 +10,10 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #f4f4f4;
+            background-image: url("Img/2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,7 +32,7 @@
 
         h1 {
             margin-bottom: 20px;
-            color: #333;
+            color: #5C0402;
         }
 
         form {
@@ -40,6 +44,7 @@
         label {
             text-align: left;
             font-weight: bold;
+            color:#202429;
         }
 
         input {
@@ -110,8 +115,8 @@
             if (user) {
                 if (user.password === password) {
                     alert('Login successful!');
-                    localStorage.setItem("loggedInUser", username); // Store logged-in state
-                    window.location.href = 'home.html'; // Redirect after login
+                    localStorage.setItem("loggedInUser", username);
+                    window.location.href = 'home.html';
                 } else {
                     alert('Incorrect password. Try again.');
                 }
