@@ -234,6 +234,10 @@
             localStorage.removeItem('loggedInUser');
         });
 
+        if(!loggedInUser){
+            window.location.href = 'login.html';
+        }
+
     </script>
 
 </body>
