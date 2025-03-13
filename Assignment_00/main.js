@@ -1,38 +1,3 @@
-document.getElementById('mobile-menu').addEventListener('click', function () {
-    document.querySelector('.nav-menu').classList.toggle('active');
-});
-
-
-// Mobile menu toggle
-const menuToggle = document.getElementById('mobile-menu');
-const navMenu = document.querySelector('.nav-menu');
-
-menuToggle.addEventListener('click', function () {
-    menuToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Add active class to current nav item
-const navLinks = document.querySelectorAll('.nav-link');
-
-navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-        navLinks.forEach(item => item.classList.remove('active'));
-        this.classList.add('active');
-
-        // Close mobile menu when item is clicked
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-// Sticky navbar
-window.addEventListener('scroll', function () {
-    const header = document.querySelector('.header');
-    header.classList.toggle('sticky', window.scrollY > 0);
-});
-
-
 let recipe = [
     {
         id: 1,
