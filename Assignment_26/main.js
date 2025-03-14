@@ -1109,48 +1109,24 @@ for (i = 0; i < cuisine.length; i++) {
     cuiselect.innerHTML += `<option value = "${cuisine[i]}" > ${cuisine[i]}</option > `;
 }
 
-// diffselect.addEventListener("change", function (event) {
-//     cuiselect.value = "";
-//     let cards = document.getElementsByClassName("cards");
-//     for (let i = 0; i < cards.length; i++) {
-//         cards[i].classList.remove("hide");
-//         if (!cards[i].classList.contains(event.target.value)) {
-//             cards[i].classList.add("hide");
-//         }
-//     }
-// })
-
-// cuiselect.addEventListener("change", function (event) {
-//     diffselect.value = "";
-//     let cards = document.getElementsByClassName("cards");
-//     for (let i = 0; i < cards.length; i++) {
-//         cards[i].classList.remove("hide");
-//         if (!cards[i].classList.contains(event.target.value)) {
-//             cards[i].classList.add("hide");
-//         }
-//     }
-// })
-
-diffSelect.addEventListener("change", function (event) {
-            filterCards();
-        });
-
-        cuisineSelect.addEventListener("change", function (event) {
-            filterCards();
-        });
-
-        function filterCards()
-            let cards = document.getElementsByClassName("card");
-
-            for (let i = 0; i < cards.length; i++) {
-                let card = cards[i];
-                let cardDifficulty = card.classList.contains(selectedDifficulty) || diffselect === "";
-                let cardCuisine = card.classList.contains(selectedCuisine) || cuiselect === "";
-
-                if (cardDifficulty && cardCuisine) {
-                    card.classList.remove("hide");
-                } else {
-                    card.classList.add("hide");
-                }
-            }
+diffselect.addEventListener("change", function (event) {
+    cuiselect.value = "";
+    let cards = document.getElementsByClassName("cards");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("hide");
+        if (!cards[i].classList.contains(event.target.value)) {
+            cards[i].classList.add("hide");
         }
+    }
+})
+
+cuiselect.addEventListener("change", function (event) {
+    diffselect.value = "";
+    let cards = document.getElementsByClassName("cards");
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("hide");
+        if (!cards[i].classList.contains(event.target.value)) {
+            cards[i].classList.add("hide");
+        }
+    }
+})
