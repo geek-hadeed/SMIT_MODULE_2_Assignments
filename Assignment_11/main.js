@@ -1,20 +1,15 @@
-let para = prompt("Enter a paragraph").trim();
+function convertToLowerCase() {
+    let text = document.getElementById("textInput").value;
+    document.getElementById("outputText").innerText = text.toLowerCase();
+}
 
-        function convertToLowerCase(text) {
-            console.log(text.toLowerCase());
-        }
+function convertToUpperCase() {
+    let text = document.getElementById("textInput").value;
+    document.getElementById("outputText").innerText = text.toUpperCase();
+}
 
-        function convertToUpperCase(text) {
-            console.log(text.toUpperCase());
-        }
-
-        function convertToCapitalCase(text) {
-
-            let words = text.split(/\s+/);
-            let newWords = [];
-            for (let i = 0; i < words.length; i++) {
-                let word = words[i];
-                newWords.push(word[0].toUpperCase() + word.slice(1).toLowerCase());
-            }
-            console.log(newWords.join(" "));
-        }
+function convertToCapitalCase() {
+    let text = document.getElementById("textInput").value;
+    let words = text.split(/\s+/).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
+    document.getElementById("outputText").innerText = words.join(" ");
+}
