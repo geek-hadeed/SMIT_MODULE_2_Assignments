@@ -1,151 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-        
+
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JavaScript Assignments</title>
-        <style>
-                /* Background & Styling */
-                body {
-                        font-family: 'Arial', sans-serif;
-                        margin: 0;
-                        padding: 0;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-                        color: white;
-                }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIT MODULE 2 JavaScript Assignments</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #121212;
+            color: #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-                h1 {
-                        font-size: 2.8rem;
-                        text-align: center;
-                        margin-bottom: 20px;
-                        text-transform: uppercase;
-                        letter-spacing: 2px;
-                        font-weight: bold;
-                }
+        h1 {
+            font-size: 2.8rem;
+            color: #1654ff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-                .container {
-                        background: rgba(255, 255, 255, 0.1);
-                        padding: 25px;
-                        border-radius: 12px;
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-                        backdrop-filter: blur(12px);
-                        width: 90%;
-                        max-width: 450px;
-                        text-align: center;
-                        border: 1px solid rgba(255, 255, 255, 0.2);
-                }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1300px;
+            width: 100%;
+            padding: 20px;
+        }
 
-                ul {
-                        list-style: none;
-                        padding: 0;
-                }
+        .card {
+            background: linear-gradient(135deg, #2a2a72, #009ffd);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: 0.3s;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
 
-                li {
-                        margin: 15px 0;
-                }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.7);
+        }
 
-                a {
-                        display: block;
-                        text-decoration: none;
-                        background: linear-gradient(135deg, #00fff2, #7595ff);
-                        padding: 14px;
-                        border-radius: 8px;
-                        font-size: 18px;
-                        color: white;
-                        font-weight: bold;
-                        transition: all 0.3s ease-in-out;
-                        box-shadow: 0 4px 8px rgba(6, 248, 196, 0.5);
-                }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
 
-                a:hover {
-                        background: linear-gradient(135deg, #0230fd, #2a4b61);
-                        transform: scale(1.05);
-                        box-shadow: 0 6px 12px rgba(6, 248, 196, 0.5);
-                }
+        .card a {
+            display: inline-block;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
 
-                /* Responsive */
-                @media (max-width: 600px) {
-                        h1 {
-                                font-size: 2.2rem;
-                        }
-                }
-        </style>
+        .card a:hover {
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 
 <body>
+    <h1>SMIT Module 2 JavaScript Assignments</h1>
+    <div class="container" id="assignmentContainer"></div>
+    <script>
+        const assignments = [
+            { title: "Assignment 1: Alert", url: "Assignment_01/", image: "images/1.jpg" },
+            { title: "Assignment 2: Variable For String", url: "Assignment_02/", image: "images/2.jpg" },
+            { title: "Assignment 3: Variable For Numbers", url: "Assignment_03/", image: "images/3.jpg" },
+            { title: "Assignment 4: Variable Names", url: "Assignment_04/", image: "images/4.jpg" },
+            { title: "Assignment 5: EasyPaisa App", url: "Assignment_05/", image: "images/5.jpg" },
+            { title: "Assignment 6: Math Expressions", url: "Assignment_06/", image: "images/6.jpg" },
+            { title: "Assignment 7: User Input & Conditional Statement", url: "Assignment_07/", image: "images/7.jpg" },
+            { title: "Assignment 8: Testing Set Of Conditions", url: "Assignment_08/", image: "images/8.jpg" },
+            { title: "Assignment 9: Arrays", url: "Assignment_09/", image: "images/9.jpg" },
+            { title: "Assignment 10: Array And Loop", url: "Assignment_10/", image: "images/10.jpg" },
+            { title: "Assignment 11: Case Changer", url: "Assignment_11/", image: "images/11.jpg" },
+            { title: "Assignment 12: Password Generator", url: "Assignment_12/", image: "images/12.jpg" },
+            { title: "Assignment 13: String Methods", url: "Assignment_13/", image: "images/13.jpg" },
+            { title: "Assignment 14: Age Calculator", url: "Assignment_14/", image: "images/14.jpg" },
+            { title: "Assignment 15: Leap Year Finder", url: "Assignment_15/", image: "images/15.jpg" },
+            { title: "Assignment 16: Day Finder", url: "Assignment_16/", image: "images/16.jpg" },
+            { title: "Assignment 17: Name Place Animal Thing", url: "Assignment_17/", image: "images/17.jpg" },
+            { title: "Assignment 18: Roll The Dice", url: "Assignment_18/", image: "images/17.jpg" },
+            { title: "Assignment 19: Simple Calculator", url: "Assignment_19/", image: "images/19.jpg" },
+            { title: "Assignment 20: Text Formatter", url: "Assignment_20/", image: "images/20.jpg" },
+            { title: "Assignment 21: Postboard", url: "Assignment_21/", image: "images/21.jpg" },
+            { title: "Assignment 22: Todo-App", url: "Assignment_22/", image: "images/22.jpg" },
+            { title: "Assignment 23: Profile Cards", url: "Assignment_23/", image: "images/23.jpg" },
+            { title: "Assignment 24: Click Me!", url: "Assignment_24/", image: "images/24.jpg" },
+            { title: "Assignment 25: Login/SignUp Page", url: "Assignment_25/", image: "images/25.jpg" },
+            { title: "Assignment 26: H.H Foods", url: "Assignment_26/", image: "images/26.jpg" },
+            // { title: "Assignment 27: ", url: "Assignment_27/", image: "images/27.jpg" },
+            // { title: "Assignment 28: ", url: "Assignment_28/", image: "images/28.jpg" },
+            // { title: "Assignment 29: ", url: "Assignment_29/", image: "images/29.jpg" },
+            // { title: "Assignment 30: ", url: "Assignment_31/", image: "images/30.jpg" },
+            // { title: "Assignment 31: ", url: "Assignment_32/", image: "images/31.jpg" },
+            // { title: "Assignment 32: ", url: "Assignment_33/", image: "images/32.jpg" }
+        ]
 
-        <h1>JavaScript Assignments</h1>
+        const container = document.getElementById("assignmentContainer");
 
-        <div class="container">
-                <ul>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_01/"
-                                        target="_blank">Assignment 1: (Alert)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_02/"
-                                        target="_blank">Assignment 2: (Variable For String)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_03/"
-                                        target="_blank">Assignment 3: (Variable For Numbers)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_04/"
-                                        target="_blank">Assignment 4: (Variable Names)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_05/"
-                                        target="_blank">Assignment 5: (EasyPaisa App)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_06/"
-                                        target="_blank">Assignment 6: (MATH EXPRESSIONS)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_07/"
-                                        target="_blank">Assignment 7: (USER INPUT & CONDITIONAL STATEMENT)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_08/"
-                                        target="_blank">Assignment 8: (TESTING SET OF CONDITIONS)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_09/"
-                                        target="_blank">Assignment 9: (Arrays)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_10/"
-                                        target="_blank">Assignment 10: (Array And Loop) </a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_11/"
-                                        target="_blank">Assignment 11: (Case Changer)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_12/"
-                                        target="_blank">Assignment 12: (Password Generator)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_13/"
-                                        target="_blank">Assignment 13: (String Methods)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_14/"
-                                        target="_blank">Assignment 14: (Age Calculator)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_15/"
-                                        target="_blank">Assignment 15: (Leap Year Finder)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_16/"
-                                        target="_blank">Assignment 16: (Day Finder)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_17/"
-                                        target="_blank">Assignment 17: (Name Place Animal Thing)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_18/"
-                                        target="_blank">Assignment 18: (Roll The Dice)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_19/"
-                                        target="_blank">Assignment 19: (Simple Calculator)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_20/"
-                                        target="_blank">Assignment 20: (Text Formatter)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_21/"
-                                        target="_blank">Assignment 21: (Postboard)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_22/"
-                                        target="_blank">Assignment 22: (Todo-App)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_23/"
-                                        target="_blank">Assignment 23: (Profile Cards)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_24/"
-                                        target="_blank">Assignment 24: (Click Me!)</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_25/"
-                                        target="_blank">Assignment 25: (Login/SignUp Page)</a></li> 
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_26/"
-                                        target="_blank">Assignment 26: (H.H Foods)</a></li> 
-                        <!-- <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_27/"
-                                        target="_blank">Assignment 27: ()</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_28/"
-                                        target="_blank">Assignment 28: ()</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_29/"
-                                        target="_blank">Assignment 29: ()</a></li>
-                        <li><a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/Assignment_30/"
-                                        target="_blank">Assignment 30: ()</a></li> -->
-                </ul>
-        </div>
-
+        assignments.forEach(assignment => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = `
+        <img src="${assignment.image}" alt="${assignment.title}">
+        <a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/${assignment.url}" target="_blank">${assignment.title}</a>
+      `;
+            container.appendChild(card);
+        });
+    </script>
 </body>
 
 </html>
