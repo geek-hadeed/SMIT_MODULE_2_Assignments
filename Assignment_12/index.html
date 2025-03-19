@@ -8,72 +8,104 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            box-sizing: border-box;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
         }
-
+        .container {
+            background: white;
+            padding: 20px;
+            width: 40%;
+            margin: 50px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
         h1 {
-            text-align: center;
-            margin-top: 5vh;
+            font-size: 28px;
             color: #333;
         }
-
-        #container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 5vh;
+        label {
+            display: block;
+            margin: 10px 0;
         }
-
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            height: 45vh;
-            width: 34%;
-            text-align: center;
-            margin-top: 15px;
+        input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            margin: 10px 0;
         }
-
-        h2 {
-            margin-top: 4vh;
-            color: #333;
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-
-        h3 {
-            color: #666;
+        button:hover {
+            background-color: #45a049;
         }
-
-        h5 {
-            color: #040925;
+        .output {
+            margin-top: 20px;
             font-size: 18px;
+            font-weight: bold;
+            color: #222;
         }
     </style>
 </head>
+
 <body>
-    <h1>Dynamic Password Generator</h1>
-    <div id="container">
-        <div class="card">
-            <h2>Alphabetic Password Generator</h2>
-            <h3>Password Length: <span id="length"> </span></h3>
-            <button onclick="generate()">Generate Password</button>
-            <h5 id="pass">_________________</h5>
-        </div>
-        <div class="card">
-            <h2>Numeric Password Generator</h2>
-            <h3>Password Length: <span id="length1"> </span></h3>
-            <button onclick="generate1()">Generate Password</button>
-            <h5 id="pass1">_________________</h5>
-        </div>
-        <div class="card">
-            <h2>Mix Password Generator</h2>
-            <h3>Password Length: <span id="length2"> </span></h3>
-            <button onclick="generate2()">Generate Password</button>
-            <h5 id="pass2">_________________</h5>
-        </div>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <label>
+            <input type="checkbox" id="includeLetters"> Include Letters
+        </label>
+        <label>
+            <input type="checkbox" id="includeNumbers"> Include Numbers
+        </label>
+        <label>
+            <input type="checkbox" id="includeSymbols"> Include Symbols
+        </label>
+        <br>
+        <label>Password Length: <input type="number" id="passLength" min="4" max="20" value="8"></label>
+        <br>
+        <button onclick="generatePassword()">Generate Password</button>
+        <p class="output" id="generatedPassword">_________________</p>
     </div>
-
-
-    <script src="script.js"></script>
+    
+    <script>
+        function generatePassword() {
+            let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            let numbers = "0123456789";
+            let symbols = "!@#$%^&*()_+{}|:'<>?";
+            let characters = "";
+            
+            if (document.getElementById("includeLetters").checked) {
+                characters += letters;
+            }
+            if (document.getElementById("includeNumbers").checked) {
+                characters += numbers;
+            }
+            if (document.getElementById("includeSymbols").checked) {
+                characters += symbols;
+            }
+            
+            let passLength = document.getElementById("passLength").value;
+            let password = "";
+            
+            if (characters.length === 0) {
+                document.getElementById("generatedPassword").innerText = "Please select at least one option!";
+                return;
+            }
+            
+            for (let i = 0; i < passLength; i++) {
+                password += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            
+            document.getElementById("generatedPassword").innerText = password;
+        }
+    </script>
 </body>
 
 </html>
