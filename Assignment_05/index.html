@@ -6,86 +6,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easy Paisa App</title>
     <style>
-        
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Easy Paisa App</h1>
+    <div class="container">
+        <h2>Easy Paisa App</h2>
+        <p id="welcome"></p>
+        <p><strong>Balance: </strong> <span id="balance">5000</span> PKR</p>
+        <button onclick="transferMoney()">Transfer Money</button>
+        <button onclick="receiveMoney()">Receive Money</button>
+        <button onclick="payBill()">Pay Bill</button>
+        <button onclick="cashback()">Cashback</button>
+        <button onclick="checkBalance()">Check Balance</button>
+        <button onclick="exitApp()">Exit</button>
+    </div>
+
     <script>
         let balance = 5000;
         let name = prompt("What is your name?");
-        alert(`Hello! ${name} 👋 Welcome To My Easy Paisa 📱 App`);
+        document.getElementById("welcome").innerText = `Hello ${name}! Welcome to Easy Paisa App`;
+        
+        function updateBalance() {
+            document.getElementById("balance").innerText = balance;
+        }
 
-        let operation = prompt("What would you like to do?\n1. Transfer Money\n2. Receive Money\n3. Pay Bill\n4. Cashbacks\n5. Easy Paisa Bundles\n6. Check You Current Balance\n7. Exit");
-
-        if (operation === "1") {
-            let transferAmount = prompt("How much would you like to transfer?");
-            let transferNum = prompt("To whom You Want To Send This Money? Enter Number:");
-
-            if (transferNum.length >= 11) {
-                if (transferAmount > balance) {
-                    alert("Insufficient Balance");
-                } else {
-                    balance -= transferAmount;
-                    alert(`After transferring ${transferAmount}, your updated balance is ${balance}`);
-                }
-            } else {
-                alert("Invalid Number");
+        function transferMoney() {
+            let amount = parseFloat(prompt("Enter amount to transfer:"));
+            let number = prompt("Enter recipient number:");
+            if (number.length < 11) {
+                alert("Invalid number!");
+                return;
             }
-        } else if (operation === "2") {
-            let receiveAmount = prompt("How much would you like to receive?");
-            let receiveNum = prompt("From whom You Want To Get This Money? Enter Number:");
-
-            if (receiveNum.length >= 11) {
-                balance += receiveAmount;
-                alert(`After receiving ${receiveAmount}, your updated balance is ${balance}`);
-            } else {
-                alert("Invalid Number");
+            if (amount > balance || amount <= 0) {
+                alert("Invalid or insufficient balance!");
+                return;
             }
-        } else if (operation === "3") {
-            let billType = prompt("Which bill would you like to pay?\n1. Electricity\n2. Gas\n3. Water\n4. Internet");
+            balance -= amount;
+            updateBalance();
+            alert(`Transferred ${amount} PKR to ${number}. New balance: ${balance} PKR`);
+        }
 
-            let billAmount = 0;
-            if (billType === "1") {
-                billAmount = 2500;
-            } else if (billType === "2") {
-                billAmount = 970;
-            } else if (billType === "3") {
-                billAmount = 250;
-            } else if (billType === "4") {
-                billAmount = 3500;
-            } else {
-                alert("Invalid choice");
+        function receiveMoney() {
+            let amount = parseFloat(prompt("Enter amount to receive:"));
+            if (amount <= 0) {
+                alert("Invalid amount!");
+                return;
             }
+            balance += amount;
+            updateBalance();
+            alert(`Received ${amount} PKR. New balance: ${balance} PKR`);
+        }
 
-            if (billAmount > 0) {
-                let accountNumber = prompt("Enter your account or meter number:");
-
-                if (accountNumber.length >= 11) {
-                    if (billAmount > balance) {
-                        alert(`Insufficient Balance.Your Current Balance Is ${balance}`);
-                    } else {
-                        balance -= billAmount;
-                        alert(`After paying a bill of ${billAmount}, your updated balance is ${balance}`);
-                    }
-                } else {
-                    alert("Invalid Account/Meter Number");
-                }
+        function payBill() {
+            let billType = prompt("Which bill? (Electricity, Gas, Water, Internet)");
+            let billAmounts = {"Electricity": 2500, "Gas": 970, "Water": 250, "Internet": 3500};
+            let amount = billAmounts[billType];
+            if (!amount) {
+                alert("Invalid bill type!");
+                return;
             }
-        } else if (operation === "4") {
-            let cashback = 0.2 * balance;
-            alert(`Your cashback is ${cashback}`);
-        } else if (operation === "5") {
-            alert("For now, I haven't added any bundles.");
-        } 
-            else if (operation === "6") {
-            alert(`Your Current Balance Is ${balance}`);
-        } 
-        else if (operation === "7") {
-            alert("Exiting...");
-        } else {
-            alert("Invalid operation.");
+            if (amount > balance) {
+                alert("Insufficient balance!");
+                return;
+            }
+            balance -= amount;
+            updateBalance();
+            alert(`Paid ${amount} PKR for ${billType}. New balance: ${balance} PKR`);
+        }
+
+        function cashback() {
+            let cashbackAmount = balance * 0.2;
+            alert(`Your cashback is ${cashbackAmount} PKR`);
+        }
+
+        function checkBalance() {
+            alert(`Your balance is ${balance} PKR`);
+        }
+
+        function exitApp() {
+            alert("Exiting Easy Paisa App. Goodbye!");
         }
     </script>
 </body>
