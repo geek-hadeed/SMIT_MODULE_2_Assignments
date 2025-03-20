@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Repositioned Moon as Background Element */
+.moon-container {
+    position: fixed;
+    top: 90px;
+    right: 100px;
+    width: 120px;
+    height: 120px;
+    animation: float 6s ease-in-out infinite;
+    z-index: 0; /* Set to 0 to place it behind content */
+}
+
+.moon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #f9f9f9, #e0e0e0);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(255, 255, 255, 0.4),
+        0 0 60px rgba(255, 255, 255, 0.2),
+        inset -15px -15px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.crater {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.crater-1 {
+    width: 20px;
+    height: 20px;
+    top: 25px;
+    left: 25px;
+}
+
+.crater-2 {
+    width: 15px;
+    height: 15px;
+    top: 60px;
+    left: 40px;
+}
+
+.crater-3 {
+    width: 25px;
+    height: 25px;
+    top: 40px;
+    right: 20px;
+}
+
+.crater-4 {
+    width: 10px;
+    height: 10px;
+    top: 20px;
+    right: 30px;
+}
+
+.crater-5 {
+    width: 12px;
+    height: 12px;
+    bottom: 15px;
+    left: 30px;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 1; /* Ensure content is above the moon */
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.countdown-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    min-width: 120px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.countdown-box:hover {
+    transform: translateY(-8px);
+}
+
+.countdown-value {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.countdown-label {
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.eid-message {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 2rem;
+    animation: fadeIn 1s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.eid-message h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+}
+
+.eid-message p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; /* Place stars behind content */
+}
+
+.stars::before,
+.stars::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+        50px 30px white, 
+        100px 80px white,
+        150px 50px white,
+        200px 120px white,
+        250px 20px white,
+        300px 180px white,
+        350px 40px white,
+        400px 150px white,
+        450px 70px white,
+        500px 200px white,
+        550px 30px white,
+        600px 90px white,
+        650px 150px white,
+        700px 50px white,
+        750px 120px white,
+        800px 40px white,
+        850px 180px white,
+        900px 60px white,
+        950px 140px white,
+        1000px 30px white,
+        1050px 90px white,
+        1100px 160px white,
+        1150px 50px white,
+        1200px 110px white;
+    animation: twinkle 5s infinite;
+}
+
+.stars::after {
+    animation-delay: 2.5s;
+    top: 100px;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .countdown-box {
+        min-width: 100px;
+        padding: 1rem;
+    }
+    
+    .countdown-value {
+        font-size: 2.5rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.8rem;
+    }
+    
+    .moon-container {
+        width: 100px;
+        height: 100px;
+        bottom: 30px;
+        right: 40px;
+    }
+    
+    .crater-1 {
+        width: 16px;
+        height: 16px;
+        top: 20px;
+        left: 20px;
+    }
+    
+    .crater-2 {
+        width: 12px;
+        height: 12px;
+        top: 48px;
+        left: 32px;
+    }
+    
+    .crater-3 {
+        width: 20px;
+        height: 20px;
+        top: 32px;
+        right: 16px;
+    }
+    
+    .crater-4 {
+        width: 8px;
+        height: 8px;
+        top: 16px;
+        right: 24px;
+    }
+    
+    .crater-5 {
+        width: 10px;
+        height: 10px;
+        bottom: 12px;
+        left: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-container {
+        gap: 1rem;
+    }
+    
+    .countdown-box {
+        min-width: 80px;
+        padding: 0.8rem;
+    }
+    
+    .countdown-value {
+        font-size: 2rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.7rem;
+    }
+    
+    .moon-container {
+        width: 80px;
+        height: 80px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .crater-1 {
+        width: 12px;
+        height: 12px;
+        top: 15px;
+        left: 15px;
+    }
+    
+    .crater-2 {
+        width: 9px;
+        height: 9px;
+        top: 36px;
+        left: 24px;
+    }
+    
+    .crater-3 {
+        width: 15px;
+        height: 15px;
+        top: 24px;
+        right: 12px;
+    }
+    
+    .crater-4 {
+        width: 6px;
+        height: 6px;
+        top: 12px;
+        right: 18px;
+    }
+    
+    .crater-5 {
+        width: 7px;
+        height: 7px;
+        bottom: 9px;
+        left: 18px;
+    }
+}
