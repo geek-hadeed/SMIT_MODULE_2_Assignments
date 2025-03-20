@@ -248,7 +248,7 @@ h1 {
     .moon-container {
         width: 100px;
         height: 100px;
-        bottom: 30px;
+        top: 35px;
         right: 40px;
     }
     
