@@ -1079,15 +1079,21 @@ let recipe = [
 let difficulty = []
 let cuisine = []
 
-for (i = 0; i < recipe.length; i++) {
+for (let i = 0; i < recipe.length; i++) {
     let cards = document.getElementById("container");
     cards.innerHTML += `<div class="cards ${recipe[i].difficulty} ${recipe[i].cuisine}">
         <img src="${recipe[i].image}" alt="${recipe[i].name}">
-            <h3>${recipe[i].name}</h3>
-            <p><strong>Rating:</strong> ⭐ ${recipe[i].rating}</p>
-            <p><strong>Meal Type:</strong> ${recipe[i].mealType.join(", ")}</p>
-            <p><strong>Reviews:</strong> ${recipe[i].reviewCount} reviews</p>
-            <p><strong>Cook Time:</strong> ⏳ ${recipe[i].cookTimeMinutes} minutes</p>
+        <h3>${recipe[i].name}</h3>
+        <p><strong>Rating:</strong> ⭐ ${recipe[i].rating}</p>
+        <p><strong>Meal Type:</strong> ${recipe[i].mealType.join(", ")}</p>
+        <p><strong>Reviews:</strong> ${recipe[i].reviewCount} reviews</p>
+        <p><strong>Cook Time:</strong> ⏳ ${recipe[i].cookTimeMinutes} minutes</p>
+        <p><strong>Ingredients:</strong>${recipe[i].ingredients}</p>
+        <button class="read-more" onclick="toggleDetails(${recipe[i].id})">Read More</button>
+        <div id="details-${recipe[i].id}" class="details" style="display: none;">
+            <p><strong>Instructions:</strong></p>
+            <p>${recipe[i].instructions.join('<br>')}</p>
+        </div>
     </div>`;
 
     if (!difficulty.includes(recipe[i].difficulty)) {
@@ -1098,6 +1104,16 @@ for (i = 0; i < recipe.length; i++) {
         cuisine.push(recipe[i].cuisine)
     }
 }
+
+function toggleDetails(id) {
+    const details = document.getElementById(`details-${id}`);
+    if (details.style.display === "none" || details.style.display === "") {
+        details.style.display = "block"; // Show details
+    } else {
+        details.style.display = "none"; // Hide details
+    }
+}
+
 let cuiselect = document.getElementById("cuis");
 let diffselect = document.getElementById("diff");
 
@@ -1109,24 +1125,29 @@ for (i = 0; i < cuisine.length; i++) {
     cuiselect.innerHTML += `<option value = "${cuisine[i]}" > ${cuisine[i]}</option > `;
 }
 
-diffselect.addEventListener("change", function (event) {
-    cuiselect.value = "";
-    let cards = document.getElementsByClassName("cards");
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove("hide");
-        if (!cards[i].classList.contains(event.target.value)) {
-            cards[i].classList.add("hide");
-        }
-    }
-})
+function filterCards() {
+    const selectedDifficulty = diffselect.value;
+    const selectedCuisine = cuiselect.value;
+    const cards = document.getElementsByClassName("cards");
 
-cuiselect.addEventListener("change", function (event) {
-    diffselect.value = "";
-    let cards = document.getElementsByClassName("cards");
     for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove("hide");
-        if (!cards[i].classList.contains(event.target.value)) {
+        const matchesDifficulty = selectedDifficulty ? cards[i].classList.contains(selectedDifficulty) : true;
+        const matchesCuisine = selectedCuisine ? cards[i].classList.contains(selectedCuisine) : true;
+
+        if (matchesDifficulty && matchesCuisine) {
+            cards[i].classList.remove("hide");
+        } else {
             cards[i].classList.add("hide");
         }
     }
-})
+}
+
+diffselect.addEventListener("change", filterCards);
+cuiselect.addEventListener("change", filterCards);
+
+function showDetails(id) {
+    const selectedRecipe = recipe.find(r => r.id === id);
+    if (selectedRecipe) {
+        alert(`Instructions for ${selectedRecipe.name}:\n\n${selectedRecipe.instructions.join('\n')}`);
+    }
+}

@@ -316,6 +316,7 @@ body {
     width: 100%;
     min-height: 100vh;
     color: blue;
+    padding: 20px;
     background-color: beige;
     text-align: center;
     font-weight: bold;
@@ -329,6 +330,7 @@ h3 {
     color: #5eff00;
 }
 
+/* 
 #pic {
     width: 70%;
     margin: auto;
@@ -369,7 +371,7 @@ h3 {
     top: 5vh;
     right: 18vh;
     border-radius: 15px;
-}
+} */
 
 /* Social Media Icons - Responsive */
 .social-icons {
@@ -409,36 +411,6 @@ h3 {
     background-color: transparent;
     border-color: #25D366;
     color: #25D366;
-}
-
-.social-icon.instagram {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-}
-
-.social-icon.instagram:hover {
-    background: transparent;
-    border-color: #dc2743;
-    color: #dc2743;
-}
-
-.social-icon.github {
-    background-color: #333;
-}
-
-.social-icon.github:hover {
-    background-color: transparent;
-    border-color: #333;
-    color: #333;
-}
-
-.social-icon.linkedin {
-    background-color: #0077B5;
-}
-
-.social-icon.linkedin:hover {
-    background-color: transparent;
-    border-color: #0077B5;
-    color: #0077B5;
 }
 
 /* Chefs Section */
@@ -512,42 +484,105 @@ select:hover {
 }
 
 .cards {
-    background-color: white;
+    background-color: #ffffff;
+    /* White background for contrast */
     border-radius: 12px;
+    /* Rounded corners */
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
-    padding: 15px;
+    /* Ensures child elements don't overflow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Softer shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition */
+    padding: 20px;
+    /* Increased padding for better spacing */
     text-align: center;
+    /* Centered text */
+    position: relative;
+    /* For positioning pseudo-elements */
 }
 
 .cards:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    /* Deeper shadow on hover */
 }
 
 .cards img {
     width: 100%;
+    /* Full width */
     height: 180px;
+    /* Fixed height */
     object-fit: cover;
+    /* Cover the area without distortion */
     border-radius: 8px;
+    /* Rounded corners for the image */
+    transition: transform 0.3s ease;
+    /* Smooth zoom effect */
+}
+
+.cards img:hover {
+    transform: scale(1.05);
+    /* Slight zoom on hover */
 }
 
 .cards h3 {
     color: #e74c3c;
-    font-size: 1.5rem;
-    margin: 10px 0;
+    /* Primary color for headings */
+    font-size: 1.6rem;
+    /* Increased font size */
+    margin: 15px 0;
+    /* Spacing above and below */
+    font-weight: bold;
+    /* Bold text for emphasis */
 }
 
 .cards p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    /* Slightly larger font size */
     color: #555;
-    margin: 5px 0;
+    /* Dark gray for better readability */
+    margin: 8px 0;
+    /* Spacing between paragraphs */
+}
+
+.cards p strong {
+    color: #333;
+    /* Darker color for strong text */
 }
 
 .hide {
     display: none;
+    /* Hide class for filtering */
 }
+
+.read-more {
+    background-color: #e74c3c;
+    /* Button background color */
+    color: white;
+    /* Button text color */
+    border: none;
+    /* No border */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 10px 15px;
+    /* Padding inside the button */
+    font-size: 1rem;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
+    /* Smooth background color transition */
+    margin-top: 10px;
+    /* Spacing above the button */
+}
+
+.read-more:hover {
+    background-color: #c0392b;
+    /* Darker shade on hover */
+}
+
 
 /* Modern Form Styling */
 #footer {
@@ -660,10 +695,10 @@ select:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.input-container input:focus ~ label,
-.input-container textarea:focus ~ label,
-.input-container input:valid ~ label,
-.input-container textarea:valid ~ label {
+.input-container input:focus~label,
+.input-container textarea:focus~label,
+.input-container input:valid~label,
+.input-container textarea:valid~label {
     top: -10px;
     left: 10px;
     font-size: 12px;
@@ -672,8 +707,8 @@ select:hover {
     padding: 0 5px;
 }
 
-.input-container input:focus ~ i,
-.input-container textarea:focus ~ i {
+.input-container input:focus~i,
+.input-container textarea:focus~i {
     color: #ff416c;
 }
 
@@ -687,8 +722,8 @@ select:hover {
     transition: all 0.3s ease;
 }
 
-.input-container input:focus ~ .focus-border,
-.input-container textarea:focus ~ .focus-border {
+.input-container input:focus~.focus-border,
+.input-container textarea:focus~.focus-border {
     width: 100%;
 }
 
@@ -754,23 +789,24 @@ select:hover {
 
 /* Large Screens (992px to 1200px) */
 @media screen and (max-width: 1200px) {
+
     /* Add styles for large screens that aren't quite desktop size */
     #text {
         max-width: 600px;
     }
-    
+
     #chefs p {
         width: 70%;
     }
-    
+
     #footer {
         padding-bottom: 40px;
     }
-    
+
     .form-container {
         max-width: 80%;
     }
-    
+
     .footer-image {
         width: 180px;
         height: 180px;
@@ -782,43 +818,43 @@ select:hover {
     .nav-item {
         margin: 0 0.5rem;
     }
-    
+
     #logo {
         font-size: 1.8rem;
     }
-    
+
     #contact-us {
         padding: 0.5rem 1rem;
     }
-    
+
     #color1 {
         font-size: 2.5rem;
     }
-    
+
     #color2 {
         font-size: 2rem;
     }
-    
+
     #text {
         padding: 2.5rem;
     }
-    
+
     /* Chef cards adjustments */
     .card {
         width: 250px;
         height: 280px;
     }
-    
+
     /* Menu adjustments */
     #container {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
-    
+
     /* Form adjustments */
     .form-container {
         padding: 35px;
     }
-    
+
     .form-header h3 {
         font-size: 26px;
     }
@@ -826,15 +862,16 @@ select:hover {
 
 /* Tablets (600px to 768px) */
 @media screen and (max-width: 768px) {
+
     /* Navbar adjustments */
     .menu-toggle {
         display: flex;
     }
-    
+
     .navbar-container {
         padding: 1rem 0;
     }
-    
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -848,66 +885,66 @@ select:hover {
         padding: 1rem 0;
         z-index: 1000;
     }
-    
+
     .nav-menu.active {
         left: 0;
         border-radius: 0 0 10px 10px;
     }
-    
+
     .nav-item {
         margin: 1.5rem 0;
     }
-    
+
     .nav-link {
         font-size: 1.1rem;
     }
-    
+
     .nav-link::after {
         display: none;
     }
-    
+
     .nav-link:hover,
     .nav-link.active {
         color: #5eff00;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 5px;
     }
-    
+
     #logo {
         font-size: 1.5rem;
     }
-    
+
     #contact-us {
         font-size: 0.9rem;
         padding: 0.4rem 0.8rem;
     }
-    
+
     /* Hero section adjustments */
     #color1 {
         font-size: 2rem;
     }
-    
+
     #color2 {
         font-size: 1.5rem;
     }
-    
+
     #text {
         padding: 2rem;
         max-width: 90%;
     }
-    
+
     /* Menu section adjustments */
     .selection {
         flex-direction: column;
         align-items: center;
         gap: 10px;
     }
-    
+
     select {
         width: 80%;
         max-width: 300px;
     }
-    
+
     /* Chef section adjustments */
     #chefcards {
         display: flex;
@@ -915,45 +952,45 @@ select:hover {
         justify-content: center;
         margin-top: 10vh;
     }
-    
+
     .card {
         width: 45%;
         min-width: 220px;
         height: auto;
         padding-bottom: 15px;
     }
-    
+
     #chefs p {
         width: 90%;
     }
-    
+
     /* Form adjustments */
     .form-container {
         padding: 30px;
         width: 95%;
     }
-    
+
     .form-header h3 {
         font-size: 24px;
         margin-bottom: 8px;
     }
-    
+
     .form-header p {
         font-size: 15px;
     }
-    
+
     .footer-image {
         width: 150px;
         height: 150px;
     }
-    
+
     /* Social icons for tablet */
     .social-icons {
         bottom: 15px;
         right: 15px;
         gap: 12px;
     }
-    
+
     .social-icon {
         width: 40px;
         height: 40px;
@@ -963,64 +1000,65 @@ select:hover {
 
 /* Mobile Landscape (480px to 600px) */
 @media screen and (max-width: 600px) {
+
     /* Hero section adjustments */
     #top {
         padding-top: 70px;
     }
-    
+
     #text {
         padding: 1.8rem;
     }
-    
+
     #color1 {
         font-size: 1.8rem;
     }
-    
+
     #color2 {
         font-size: 1.4rem;
     }
-    
+
     .cities {
         font-size: 0.9rem;
         padding: 0.5rem 0.8rem;
     }
-    
+
     /* Menu section adjustments */
     #menu h3 {
         font-size: 28px;
         margin: 30px 0;
     }
-    
+
     #container {
         padding: 10px;
         gap: 15px;
     }
-    
+
     .cards h3 {
         font-size: 1.3rem;
     }
-    
+
     /* Chef section adjustments */
     .card {
         width: 90%;
         margin: 10px auto;
     }
-    
+
     /* Form adjustments */
     .form-container {
         padding: 25px;
     }
-    
+
     .form-header h3 {
         font-size: 22px;
         margin: 0 0 8px 0;
     }
-    
+
     .input-container input,
     .input-container textarea {
         padding: 14px 14px 14px 38px;
     }
-    
+
     .submit-btn {
         padding: 14px;
     }
@@ -1028,113 +1066,114 @@ select:hover {
 
 /* Small Mobile Devices (up to 480px) */
 @media screen and (max-width: 480px) {
+
     /* Navbar adjustments */
     .navbar-container {
         width: 95%;
     }
-    
+
     #contact-us {
         font-size: 0.8rem;
         padding: 0.3rem 0.6rem;
     }
-    
+
     #logo {
         font-size: 1.2rem;
     }
-    
+
     /* Hero section adjustments */
     #color1 {
         font-size: 1.5rem;
     }
-    
+
     #color2 {
         font-size: 1.2rem;
     }
-    
+
     #text {
         padding: 1.5rem;
         border-radius: 15px;
     }
-    
+
     #text p {
         font-size: 0.9rem;
         line-height: 1.6;
     }
-    
+
     .cities {
         font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
     }
-    
+
     /* Menu section adjustments */
     #menu h3 {
         font-size: 24px;
         margin: 20px 0;
     }
-    
+
     select {
         width: 90%;
         padding: 10px;
         font-size: 0.9rem;
     }
-    
+
     /* Chef section adjustments */
     #chefs h3 {
         font-size: 24px;
     }
-    
+
     .card img {
         width: 120px;
         height: 120px;
     }
-    
+
     /* Form adjustments */
     .form-container {
         padding: 20px;
     }
-    
+
     .form-header h3 {
         font-size: 22px;
     }
-    
+
     .form-header p {
         font-size: 14px;
     }
-    
+
     .input-container input,
     .input-container textarea {
         padding: 12px 12px 12px 35px;
         font-size: 14px;
     }
-    
+
     .input-container i {
         top: 12px;
         left: 8px;
     }
-    
+
     .input-container label {
         top: 12px;
         left: 35px;
         font-size: 14px;
     }
-    
+
     .submit-btn {
         padding: 12px;
         font-size: 14px;
     }
-    
+
     .footer-image {
         width: 120px;
         height: 120px;
     }
-    
+
     /* Social icons for mobile */
     .social-icons {
         bottom: 10px;
         right: 10px;
         gap: 10px;
     }
-    
+
     .social-icon {
         width: 35px;
         height: 35px;
@@ -1147,76 +1186,76 @@ select:hover {
     #logo {
         font-size: 1rem;
     }
-    
+
     #contact-us {
         font-size: 0.7rem;
         padding: 0.3rem 0.5rem;
     }
-    
+
     #color1 {
         font-size: 1.3rem;
     }
-    
+
     #color2 {
         font-size: 1.1rem;
     }
-    
+
     .cities {
         font-size: 0.7rem;
         padding: 0.3rem 0.6rem;
     }
-    
+
     /* Form adjustments */
     .form-container {
         padding: 15px;
     }
-    
+
     .form-header h3 {
         font-size: 20px;
         margin: 0 0 5px 0;
     }
-    
+
     .form-header p {
         font-size: 13px;
     }
-    
+
     .form-group {
         gap: 20px;
     }
-    
+
     .input-container input,
     .input-container textarea {
         padding: 10px 10px 10px 30px;
         font-size: 13px;
     }
-    
+
     .input-container i {
         top: 10px;
         left: 7px;
         font-size: 14px;
     }
-    
+
     .input-container label {
         top: 10px;
         left: 30px;
         font-size: 13px;
     }
-    
+
     .submit-btn {
         padding: 10px;
         font-size: 13px;
     }
-    
+
     .footer-image {
         width: 100px;
         height: 100px;
         border-width: 3px;
     }
-    
+
     .copyright {
         font-size: 12px;
     }
-    
+
     /* Social icons for very small screens */
     .social-icons {
         flex-direction: column;
@@ -1224,7 +1263,7 @@ select:hover {
         right: 10px;
         gap: 8px;
     }
-    
+
     .social-icon {
         width: 32px;
         height: 32px;
