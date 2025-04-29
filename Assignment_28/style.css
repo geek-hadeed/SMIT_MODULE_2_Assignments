@@ -7,6 +7,8 @@
 
 body {
     background-image: url(Img/bg.avif);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     background-color: #121212;
     min-height: 100vh;
     display: flex;
@@ -44,8 +46,8 @@ h1 span {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    max-width: 1000px;
+    gap: 0.5rem;
+    max-width: 90%;
 }
 
 .key {
