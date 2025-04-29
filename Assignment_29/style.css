@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    
+    background: linear-gradient(135deg, #0b1274, #000000);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .clock {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 15px solid #fff;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(255, 255, 255, 0.2);
+    position: relative;
+  }
+  
+  .clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #f0f0f0;
+    z-index: 1;
+  }
+  
+  /* Hour markers */
+  .marker {
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    background: #333;
+    left: 50%;
+    margin-left: -1.5px;
+    transform-origin: 50% 125px;
+  }
+  
+  .marker-1 {
+    transform: rotate(30deg);
+  }
+  .marker-2 {
+    transform: rotate(60deg);
+  }
+  .marker-3 {
+    transform: rotate(90deg);
+    width: 5px;
+    height: 20px;
+    margin-left: -2.5px;
+  }
+  .marker-4 {
+    transform: rotate(120deg);
+  }
+  .marker-5 {
+    transform: rotate(150deg);
+  }
+  .marker-6 {
+    transform: rotate(180deg);
+    width: 5px;
+    height: 20px;
+    margin-left: -2.5px;
+  }
+  .marker-7 {
+    transform: rotate(210deg);
+  }
+  .marker-8 {
+    transform: rotate(240deg);
+  }
+  .marker-9 {
+    transform: rotate(270deg);
+    width: 5px;
+    height: 20px;
+    margin-left: -2.5px;
+  }
+  .marker-10 {
+    transform: rotate(300deg);
+  }
+  .marker-11 {
+    transform: rotate(330deg);
+  }
+  .marker-12 {
+    transform: rotate(0deg);
+    width: 5px;
+    height: 20px;
+    margin-left: -2.5px;
+  }
+  
+  /* Clock hands */
+  .hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: 50% 100%;
+    z-index: 2;
+  }
+  
+  .hour-hand {
+    width: 8px;
+    height: 80px;
+    background: #333;
+    border-radius: 4px;
+    margin-left: -4px;
+  }
+  
+  .minute-hand {
+    width: 6px;
+    height: 110px;
+    background: #666;
+    border-radius: 3px;
+    margin-left: -3px;
+  }
+  
+  .second-hand {
+    width: 2px;
+    height: 120px;
+    background: #e74c3c;
+    border-radius: 1px;
+    margin-left: -1px;
+  }
+  
+  /* Center point */
+  .center-point {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #e74c3c;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  
+  .center-point::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Digital time for debugging */
+  .digital-time {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 500px) {
+    .clock {
+      width: 250px;
+      height: 250px;
+    }
+  
+    .marker {
+      transform-origin: 50% 100px;
+    }
+  
+    .hour-hand {
+      height: 65px;
+    }
+  
+    .minute-hand {
+      height: 90px;
+    }
+  
+    .second-hand {
+      height: 100px;
+    }
+  }
+  
