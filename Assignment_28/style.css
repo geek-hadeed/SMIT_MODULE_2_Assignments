@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-image: url(Img/bg.avif);
+    background-color: #121212;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: white;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 span {
+    color: #FFD700;
+    /* Gold color for "DRUM" */
+}
+
+.instructions {
+    color: #999;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.keys {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1000px;
+}
+
+.key {
+    width: 110px;
+    height: 110px;
+    border: 4px solid #333;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.07s;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+kbd {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.sound {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #FFD700;
+    letter-spacing: 0.1em;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #FFD700;
+    box-shadow: 0 0 20px #FFD700;
+    background-color: rgba(255, 215, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .key {
+        width: 90px;
+        height: 90px;
+    }
+
+    kbd {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .keys {
+        gap: 0.5rem;
+    }
+
+    .key {
+        width: 70px;
+        height: 70px;
+    }
+
+    kbd {
+        font-size: 1.5rem;
+    }
+
+    .sound {
+        font-size: 0.7rem;
+    }
+}
