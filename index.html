@@ -167,7 +167,7 @@
             const card = document.createElement("div");
             card.classList.add("card");
             card.innerHTML = `
-        <img src="${assignment.image}" alt="${assignment.title}">
+        <img src="${assignment.image}" alt="${assignment.title}" loading="lazy">
         <a href="https://geek-hadeed.github.io/SMIT_MODULE_2_Assignments/${assignment.url}" target="_blank">${assignment.title}</a>
       `;
             container.appendChild(card);
