@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background: linear-gradient(135deg, #1e5c2a 0%, #2a7239 100%);
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -16,7 +16,19 @@ body {
     position: relative;
 }
 
-/* Repositioned Moon as Background Element */
+/* Islamic Pattern Background */
+.islamic-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" d="M25,25 L75,25 L75,75 L25,75 Z M25,50 L75,50 M50,25 L50,75 M35,25 A15,15 0 0,1 50,40 A15,15 0 0,1 65,25 M75,35 A15,15 0 0,1 60,50 A15,15 0 0,1 75,65 M65,75 A15,15 0 0,1 50,60 A15,15 0 0,1 35,75 M25,65 A15,15 0 0,1 40,50 A15,15 0 0,1 25,35"/></svg>');
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* Moon Styling */
 .moon-container {
     position: fixed;
     top: 90px;
@@ -24,7 +36,7 @@ body {
     width: 120px;
     height: 120px;
     animation: float 6s ease-in-out infinite;
-    z-index: 0; /* Set to 0 to place it behind content */
+    z-index: 0;
 }
 
 .moon {
@@ -89,14 +101,59 @@ body {
     max-width: 800px;
     width: 100%;
     position: relative;
-    z-index: 1; /* Ensure content is above the moon */
+    z-index: 1;
+}
+
+/* Header with crescents */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.crescent-left, .crescent-right {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(145deg, #ffd700, #ffcc00);
+    border-radius: 50%;
+    position: relative;
+    margin: 0 20px;
+}
+
+.crescent-left::before, .crescent-right::before {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #1e5c2a 0%, #2a7239 100%);
+    border-radius: 50%;
+    top: 0;
+}
+
+.crescent-left::before {
+    right: -5px;
+}
+
+.crescent-right::before {
+    left: -5px;
 }
 
 h1 {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
     font-weight: 700;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
+
+/* Arabic Title */
+.arabic-title {
+    font-family: 'Amiri', serif;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: #ffd700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .countdown-container {
@@ -136,6 +193,105 @@ h1 {
     letter-spacing: 2px;
 }
 
+/* Mosque Silhouette */
+.mosque-silhouette {
+    height: 120px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" preserveAspectRatio="none"><path fill="rgba(0,0,0,0.3)" d="M0,200 L0,120 L40,120 L40,100 C40,80 60,80 60,100 L60,120 L100,120 L100,80 C100,60 120,60 120,80 L120,120 L160,120 L160,100 C160,80 180,80 180,100 L180,120 L220,120 L220,80 C220,60 240,60 240,80 L240,120 L280,120 L280,100 C280,80 300,80 300,100 L300,120 L340,120 L340,80 C340,60 360,60 360,80 L360,120 L400,120 L400,100 C400,80 420,80 420,100 L420,120 L460,120 L460,80 C460,60 480,60 480,80 L480,120 L520,120 L520,100 C520,80 540,80 540,100 L540,120 L580,120 L580,80 C580,60 600,60 600,80 L600,120 L640,120 L640,100 C640,80 660,80 660,100 L660,120 L700,120 L700,80 C700,60 720,60 720,80 L720,120 L760,120 L760,100 C760,80 780,80 780,100 L780,120 L820,120 L820,80 C820,60 840,60 840,80 L840,120 L880,120 L880,100 C880,80 900,80 900,100 L900,120 L940,120 L940,80 C940,60 960,60 960,80 L960,120 L1000,120 L1000,200 Z"/></svg>');
+    background-size: cover;
+    background-position: bottom;
+    margin-bottom: 20px;
+}
+
+/* Info Card */
+.info-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-card h3 {
+    color: #ffd700;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+}
+
+.info-card p {
+    line-height: 1.6;
+}
+
+/* Enhanced Sheep Styling */
+.sheep-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.sheep {
+    width: 80px;
+    height: 60px;
+    background: #f5f5f5;
+    border-radius: 50% 50% 40% 40%;
+    position: relative;
+    animation: sheepFloat 3s ease-in-out infinite;
+}
+
+.sheep-head {
+    width: 35px;
+    height: 40px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    left: 10px;
+}
+
+.sheep-ear {
+    width: 15px;
+    height: 20px;
+    background: #d0d0d0;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+}
+
+.sheep-ear-left {
+    transform: rotate(-30deg);
+    top: -30px;
+    left: 8px;
+}
+
+.sheep-ear-right {
+    transform: rotate(30deg);
+    top: -30px;
+    left: 28px;
+}
+
+.sheep-eye {
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+}
+
+.sheep-1 {
+    animation-delay: 0s;
+}
+
+.sheep-2 {
+    animation-delay: 0.5s;
+}
+
+.sheep-3 {
+    animation-delay: 1s;
+}
+
 .eid-message {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -155,6 +311,14 @@ h1 {
 .eid-message p {
     font-size: 1.2rem;
     line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.arabic-eid {
+    font-family: 'Amiri', serif;
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-top: 1rem;
 }
 
 .hidden {
@@ -168,7 +332,7 @@ h1 {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 0; /* Place stars behind content */
+    z-index: 0;
 }
 
 .stars::before,
@@ -212,6 +376,20 @@ h1 {
     top: 100px;
 }
 
+.pulse {
+    animation: pulse 0.5s ease-in-out;
+}
+
+.pulse-animation {
+    animation: pulse 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 @keyframes twinkle {
     0%, 100% { opacity: 0.7; }
     50% { opacity: 0.3; }
@@ -227,8 +405,17 @@ h1 {
     50% { transform: translateY(-10px) rotate(2deg); }
 }
 
+@keyframes sheepFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
 @media (max-width: 768px) {
     h1 {
+        font-size: 1.8rem;
+    }
+    
+    .arabic-title {
         font-size: 1.8rem;
     }
     
@@ -252,39 +439,53 @@ h1 {
         right: 40px;
     }
     
-    .crater-1 {
-        width: 16px;
-        height: 16px;
-        top: 20px;
-        left: 20px;
+    .mosque-silhouette {
+        height: 80px;
     }
     
-    .crater-2 {
+    .crescent-left, .crescent-right {
+        width: 30px;
+        height: 30px;
+        margin: 0 15px;
+    }
+    
+    .crescent-left::before, .crescent-right::before {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .sheep {
+        width: 60px;
+        height: 45px;
+    }
+    
+    .sheep-head {
+        width: 28px;
+        height: 32px;
+        top: -16px;
+        left: 8px;
+    }
+    
+    .sheep-ear {
         width: 12px;
-        height: 12px;
-        top: 48px;
-        left: 32px;
+        height: 16px;
     }
     
-    .crater-3 {
-        width: 20px;
-        height: 20px;
-        top: 32px;
-        right: 16px;
+    .sheep-ear-left {
+        top: -24px;
+        left: 6px;
     }
     
-    .crater-4 {
-        width: 8px;
-        height: 8px;
-        top: 16px;
-        right: 24px;
+    .sheep-ear-right {
+        top: -24px;
+        left: 22px;
     }
     
-    .crater-5 {
-        width: 10px;
-        height: 10px;
-        bottom: 12px;
-        left: 24px;
+    .sheep-eye {
+        width: 6px;
+        height: 6px;
+        top: -8px;
+        left: 16px;
     }
 }
 
@@ -309,42 +510,68 @@ h1 {
     .moon-container {
         width: 80px;
         height: 80px;
-        bottom: 20px;
+        top: 20px;
         right: 20px;
     }
     
-    .crater-1 {
-        width: 12px;
-        height: 12px;
-        top: 15px;
-        left: 15px;
+    .mosque-silhouette {
+        height: 60px;
     }
     
-    .crater-2 {
-        width: 9px;
-        height: 9px;
-        top: 36px;
-        left: 24px;
+    .crescent-left, .crescent-right {
+        width: 25px;
+        height: 25px;
+        margin: 0 10px;
     }
     
-    .crater-3 {
-        width: 15px;
-        height: 15px;
-        top: 24px;
-        right: 12px;
+    .crescent-left::before, .crescent-right::before {
+        width: 20px;
+        height: 20px;
     }
     
-    .crater-4 {
-        width: 6px;
-        height: 6px;
-        top: 12px;
-        right: 18px;
+    .arabic-title {
+        font-size: 1.5rem;
     }
     
-    .crater-5 {
-        width: 7px;
-        height: 7px;
-        bottom: 9px;
-        left: 18px;
+    .sheep {
+        width: 50px;
+        height: 38px;
+    }
+    
+    .sheep-head {
+        width: 24px;
+        height: 28px;
+        top: -14px;
+        left: 7px;
+    }
+    
+    .sheep-ear {
+        width: 10px;
+        height: 14px;
+    }
+    
+    .sheep-ear-left {
+        top: -22px;
+        left: 5px;
+    }
+    
+    .sheep-ear-right {
+        top: -22px;
+        left: 19px;
+    }
+    
+    .sheep-eye {
+        width: 5px;
+        height: 5px;
+        top: -7px;
+        left: 14px;
+    }
+    
+    .info-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .info-card p {
+        font-size: 0.9rem;
     }
 }

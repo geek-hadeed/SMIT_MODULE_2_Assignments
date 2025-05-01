@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Set the date for Eid ul Fitr 2025 (April 1, 2025)
-    const eidDate = new Date('April 1, 2025 00:00:00').getTime();
+    // Set the date for Eid ul Adha 2025 (June 7, 2025)
+    const eidDate = new Date('June 7, 2025 00:00:00').getTime();
 
     // Elements
     const daysEl = document.getElementById('days');
@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    createStars();
 
     function addPulseEffect() {
         countdownBoxes.forEach((box, index) => {
@@ -89,4 +90,3 @@ document.addEventListener('DOMContentLoaded', function () {
     
     setTimeout(addPulseEffect, 1000);
 });
-
