@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a1a2e;
+    --secondary-color: #16213e;
+    --accent-color: #0f3460;
+    --text-color: #e7e7e7;
+    --caption-bg: rgba(15, 52, 96, 0.85);
+    --transition-speed: 0.6s;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 2rem 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #e0e0e0, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.gallery {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    position: relative;
+    flex: 1;
+    min-width: 50px; /* Ensure items don't get too narrow */
+    overflow: hidden;
+    transition: flex var(--transition-speed) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.gallery-item.active {
+    flex: 6;
+}
+
+.gallery-item:not(.active) {
+    flex: 0.5;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease, filter var(--transition-speed) ease;
+}
+
+.gallery-item.active img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.gallery-item:not(.active) img {
+    filter: brightness(0.7) grayscale(0.3);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.gallery-item.active .overlay {
+    opacity: 1;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all var(--transition-speed) ease;
+    z-index: 2;
+}
+
+.gallery-item.active .caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.caption h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.caption p {
+    font-size: 1rem;
+    opacity: 0.9;
+    max-width: 80%;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-info {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+    .gallery {
+        height: 70vh;
+    }
+    
+    /* For larger number of items, we can use multiple rows */
+    .gallery-item {
+        height: 100%;
+        max-width: 16.666%; /* 6 items per row */
+    }
+    
+    .gallery-item.active {
+        max-width: 50%; /* Active item takes half the row */
+    }
+}
+
+@media (max-width: 1024px) {
+    .gallery {
+        height: 70vh;
+    }
+    
+    .caption h2 {
+        font-size: 1.5rem;
+    }
+    
+    .caption p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        height: 60vh;
+        flex-wrap: wrap;
+    }
+    
+    .gallery-item {
+        flex: 1 0 33.333%; /* 3 items per row */
+        height: 50%;
+    }
+    
+    .gallery-item.active {
+        flex: 1 0 66.666%; /* Active item takes 2/3 of row */
+    }
+    
+    .gallery-item:not(.active) {
+        flex: 1 0 33.333%;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .caption {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        height: 80vh;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    
+    .gallery-item {
+        flex: 1;
+        height: 60px;
+        transition: height var(--transition-speed) ease;
+        max-width: 100%;
+    }
+    
+    .gallery-item.active {
+        height: 300px;
+        flex: unset;
+        max-width: 100%;
+    }
+    
+    .gallery-item:not(.active) {
+        flex: unset;
+        max-width: 100%;
+    }
+    
+    .caption h2 {
+        font-size: 1.2rem;
+    }
+    
+    .caption p {
+        font-size: 0.8rem;
+        max-width: 100%;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
