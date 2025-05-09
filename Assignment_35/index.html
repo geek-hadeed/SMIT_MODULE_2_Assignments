@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript Array Methods Explorer</h1>
+        <p>Interactive demonstration of powerful array methods in JavaScript</p>
+    </header>
+
+    <main>
+        <section class="data-section">
+            <div class="data-container">
+                <h2>Sample Data</h2>
+                <div class="data-tabs">
+                    <button class="tab-btn active" data-tab="people">People Array</button>
+                    <button class="tab-btn" data-tab="comments">Comments Array</button>
+                </div>
+
+                <div class="data-display active" id="people-data">
+                    <pre><code id="people-code"></code></pre>
+                </div>
+
+                <div class="data-display" id="comments-data">
+                    <pre><code id="comments-code"></code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="methods-section">
+            <h2>Array Methods</h2>
+            <div class="methods-container">
+                <div class="method-card" data-method="some">
+                    <h3>.some()</h3>
+                    <p>Checks if at least one element passes the test</p>
+                    <div class="example">
+                        <h4>Example: Check if any person is an adult</h4>
+                        <pre><code>const isAdult = people.some(person => 
+  (new Date()).getFullYear() - person.year >= 18);</code></pre>
+                        <button class="run-btn" data-method="some">Run Example</button>
+                        <div class="result" id="some-result"></div>
+                    </div>
+                </div>
+
+                <div class="method-card" data-method="filter">
+                    <h3>.filter()</h3>
+                    <p>Creates a new array with elements that pass the test</p>
+                    <div class="example">
+                        <h4>Example: Find all adults</h4>
+                        <pre><code>const allAdults = people.filter(person => 
+  (new Date()).getFullYear() - person.year >= 18);</code></pre>
+                        <button class="run-btn" data-method="filter-adults">Run Example</button>
+                        <div class="result" id="filter-adults-result"></div>
+                    </div>
+                    <div class="example">
+                        <h4>Example: Find comment with ID 523423</h4>
+                        <pre><code>const specificComment = comments.filter(
+  comment => comment.id === 523423);</code></pre>
+                        <button class="run-btn" data-method="filter-comment">Run Example</button>
+                        <div class="result" id="filter-comment-result"></div>
+                    </div>
+                </div>
+
+                <div class="method-card" data-method="find">
+                    <h3>.find()</h3>
+                    <p>Returns the first element that passes the test</p>
+                    <div class="example">
+                        <h4>Example: Find person named 'Wes'</h4>
+                        <pre><code>const wes = people.find(
+  person => person.name === 'Wes');</code></pre>
+                        <button class="run-btn" data-method="find">Run Example</button>
+                        <div class="result" id="find-result"></div>
+                    </div>
+                </div>
+
+                <div class="method-card" data-method="map">
+                    <h3>.map()</h3>
+                    <p>Creates a new array by transforming each element</p>
+                    <div class="example">
+                        <h4>Example: Get array of all names</h4>
+                        <pre><code>const names = people.map(person => person.name);</code></pre>
+                        <button class="run-btn" data-method="map">Run Example</button>
+                        <div class="result" id="map-result"></div>
+                    </div>
+                </div>
+
+                <div class="method-card" data-method="sort">
+                    <h3>.sort()</h3>
+                    <p>Sorts the elements of an array</p>
+                    <div class="example">
+                        <h4>Example: Sort people by age (youngest first)</h4>
+                        <pre><code>const sortedByAge = [...people].sort(
+  (a, b) => a.year - b.year);</code></pre>
+                        <button class="run-btn" data-method="sort">Run Example</button>
+                        <div class="result" id="sort-result"></div>
+                    </div>
+                </div>
+
+                <div class="method-card" data-method="reduce">
+                    <h3>.reduce()</h3>
+                    <p>Reduces array to a single value by applying a function</p>
+                    <div class="example">
+                        <h4>Example: Sum of all years</h4>
+                        <pre><code>const yearSum = people.reduce(
+  (total, person) => total + person.year, 0);</code></pre>
+                        <button class="run-btn" data-method="reduce">Run Example</button>
+                        <div class="result" id="reduce-result"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="playground-section">
+            <h2>Try It Yourself</h2>
+            <div class="playground-container">
+                <div class="code-editor">
+                    <h3>Write your array method code:</h3>
+                    <textarea id="code-input"
+                        placeholder="// Example: people.filter(person => person.name.includes('e'))"></textarea>
+                </div>
+                <div class="controls">
+                    <button id="run-custom">Run Code</button>
+                    <button id="clear-custom">Clear</button>
+                </div>
+                <div class="custom-result">
+                    <h3>Result:</h3>
+                    <pre><code id="custom-result"></code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>JavaScript Array Methods Explorer | Learn more about array methods on <a
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                target="_blank">MDN Web Docs</a></p>
+    </footer>
+
+</body>
+
+</html>

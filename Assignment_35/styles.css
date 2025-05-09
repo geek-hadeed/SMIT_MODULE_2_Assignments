@@ -1,0 +1,314 @@
+/* Base styles */
+:root {
+    --primary-color: #4a6ee0;
+    --primary-dark: #3a5bc7;
+    --secondary-color: #f8f9fa;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #e1e4e8;
+    --card-bg: #fff;
+    --code-bg: #f6f8fa;
+    --success-color: #28a745;
+    --highlight-color: #ffeb3b;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    padding-bottom: 2rem;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+    color: var(--text-color);
+  }
+  
+  h4 {
+    font-size: 1rem;
+    color: var(--text-light);
+  }
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Layout */
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  
+  header h1 {
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  
+  header p {
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  section {
+    margin-bottom: 3rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  footer a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  /* Data Section */
+  .data-container {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .data-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: var(--transition);
+    border-bottom: 2px solid transparent;
+  }
+  
+  .tab-btn:hover {
+    opacity: 1;
+  }
+  
+  .tab-btn.active {
+    opacity: 1;
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+  }
+  
+  .data-display {
+    display: none;
+    background-color: var(--code-bg);
+    border-radius: 4px;
+    padding: 1rem;
+    overflow: auto;
+  }
+  
+  .data-display.active {
+    display: block;
+  }
+  
+  pre {
+    font-family: 'Consolas', 'Monaco', monospace;
+    white-space: pre-wrap;
+  }
+  
+  code {
+    font-size: 0.9rem;
+  }
+  
+  /* Methods Section */
+  .methods-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .method-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    transition: var(--transition);
+  }
+  
+  .method-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .example {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .example pre {
+    background-color: var(--code-bg);
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin: 0.5rem 0 1rem;
+    overflow-x: auto;
+  }
+  
+  .run-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+  }
+  
+  .run-btn:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  .result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--code-bg);
+    border-radius: 4px;
+    min-height: 50px;
+    display: none;
+  }
+  
+  .result.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+  }
+  
+  /* Playground Section */
+  .playground-container {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+  }
+  
+  .code-editor {
+    margin-bottom: 1rem;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 1rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .controls button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+  }
+  
+  #run-custom {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  #run-custom:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  #clear-custom {
+    background-color: var(--text-light);
+    color: white;
+  }
+  
+  #clear-custom:hover {
+    background-color: var(--text-color);
+  }
+  
+  .custom-result {
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    min-height: 100px;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .methods-container {
+      grid-template-columns: 1fr;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
