@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konami Code Detector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Type the Konami Code</h1>
+    <div class="code-display">
+      <div class="key-sequence">
+        <div class="key" data-key="ArrowUp">↑</div>
+        <div class="key" data-key="ArrowUp">↑</div>
+        <div class="key" data-key="ArrowDown">↓</div>
+        <div class="key" data-key="ArrowDown">↓</div>
+        <div class="key" data-key="ArrowLeft">←</div>
+        <div class="key" data-key="ArrowRight">→</div>
+        <div class="key" data-key="ArrowLeft">←</div>
+        <div class="key" data-key="ArrowRight">→</div>
+        <div class="key" data-key="b">B</div>
+        <div class="key" data-key="a">A</div>
+      </div>
+    </div>
+    
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    
+    <div id="message"></div>
+    
+    <div class="controls">
+      <button id="reset-btn">Reset</button>
+      <button id="hint-btn">Show Hint</button>
+    </div>
+    
+    <div class="mobile-controls">
+      <div class="d-pad">
+        <button class="mobile-key up" data-key="ArrowUp">↑</button>
+        <button class="mobile-key left" data-key="ArrowLeft">←</button>
+        <button class="mobile-key right" data-key="ArrowRight">→</button>
+        <button class="mobile-key down" data-key="ArrowDown">↓</button>
+      </div>
+      <div class="action-buttons">
+        <button class="mobile-key" data-key="b">B</button>
+        <button class="mobile-key" data-key="a">A</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <h2>🎉 Konami Code Activated! 🎮</h2>
+      <p>You've unlocked the secret!</p>
+      <div class="secret-content">
+        <div class="game-character"></div>
+      </div>
+      <button id="close-modal">Close</button>
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
