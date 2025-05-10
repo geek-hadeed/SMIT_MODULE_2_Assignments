@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="video-container" id="video-container">
+            <!-- Video element -->
+            <video class="video" id="video" poster="media/thum.jpg">
+                <source src="media/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Video controls -->
+            <div class="controls">
+                <!-- Progress bar -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="progress-hover-time" id="progress-hover-time">00:00</div>
+                </div>
+
+                <!-- Control buttons -->
+                <div class="buttons-container">
+                    <div class="left-controls">
+                        <button class="play-pause" id="play-pause" title="Play/Pause (Space)">
+                            <div class="play-icon"></div>
+                            <div class="pause-icon"></div>
+                        </button>
+                        
+                        <div class="volume-container">
+                            <button class="volume" id="volume" title="Mute/Unmute (M)">
+                                <div class="volume-icon"></div>
+                                <div class="volume-mute-icon"></div>
+                            </button>
+                            <div class="volume-slider-container">
+                                <div class="volume-slider">
+                                    <div class="volume-progress" id="volume-progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="time">
+                            <span id="current-time">00:00</span>
+                            <span>/</span>
+                            <span id="duration">00:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="right-controls">
+                        <button class="speed" id="speed" title="Playback Speed">1x</button>
+                        <button class="pip" id="pip" title="Picture in Picture">PIP</button>
+                        <button class="fullscreen" id="fullscreen" title="Fullscreen (F)">
+                            <div class="fullscreen-icon"></div>
+                            <div class="exit-fullscreen-icon"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big play button in the center -->
+            <div class="big-play-button" id="big-play-button">
+                <div class="big-play-icon"></div>
+            </div>
+            
+            <!-- Keyboard shortcuts info -->
+            <div class="shortcuts-info" id="shortcuts-info">
+                <div class="shortcuts-panel">
+                    <h3>Keyboard Shortcuts</h3>
+                    <ul>
+                        <li><span class="key">Space</span> Play/Pause</li>
+                        <li><span class="key">M</span> Mute/Unmute</li>
+                        <li><span class="key">F</span> Fullscreen</li>
+                        <li><span class="key">→</span> Forward 5s</li>
+                        <li><span class="key">←</span> Backward 5s</li>
+                        <li><span class="key">↑</span> Volume Up</li>
+                        <li><span class="key">↓</span> Volume Down</li>
+                        <li><span class="key">?</span> Show/Hide Shortcuts</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Skip forward/backward buttons -->
+            <button class="skip-button skip-backward" id="skip-backward" title="Skip Backward 5s">
+                <div class="skip-backward-icon">-5s</div>
+            </button>
+            <button class="skip-button skip-forward" id="skip-forward" title="Skip Forward 5s">
+                <div class="skip-forward-icon">+5s</div>
+            </button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
