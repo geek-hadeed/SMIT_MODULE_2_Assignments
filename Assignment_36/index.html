@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Methods</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Chrome DevTools Console Methods</h1>
+        <p class="subtitle">Open your browser console (F12 or Ctrl+Shift+J) to see the magic happen!</p>
+    </header>
+
+    <main>
+        <section class="console-methods">
+            <div class="method-card" data-method="styling">
+                <h2>Styling console.log()</h2>
+                <p>Add custom CSS styles to your console messages</p>
+                <button>Try It</button>
+                <div class="code-snippet">
+                    <pre><code>console.log('%c Hello World', 'color: blue; font-size: 20px;');</code></pre>
+                </div>
+            </div>
+
+            <div class="method-card" data-method="types">
+                <h2>Console Message Types</h2>
+                <p>Different log types for different purposes</p>
+                <button>Try It</button>
+                <div class="code-snippet">
+                    <pre><code>console.log('Standard log message');
+console.warn('This is a warning');
+console.error('This is an error');
+console.info('This is an info message');</code></pre>
+                </div>
+            </div>
+
+            <div class="method-card" data-method="assert">
+                <h2>console.assert()</h2>
+                <p>Logs a message only if the assertion fails</p>
+                <button>Try It</button>
+                <div class="code-snippet">
+                    <pre><code>console.assert(1 === 2, 'Assertion failed: 1 is not equal to 2');</code></pre>
+                </div>
+            </div>
+
+            <div class="method-card" data-method="dir">
+                <h2>console.dir()</h2>
+                <p>Displays a DOM element as a JavaScript object</p>
+                <button>Try It</button>
+                <div class="code-snippet">
+                    <pre><code>const el = document.querySelector('h1');
+console.dir(el);</code></pre>
+                </div>
+            </div>
+
+            <div class="method-card" data-method="group">
+                <h2>Grouping Console Logs</h2>
+                <p>Group related messages together</p>
+                <button>Try It</button>
+                <div class="code-snippet">
+                    <pre><code>console.group('User Info');
+console.log('Name: John Doe');
+console.log('Age: 30');
+console.groupEnd();</code></pre>
+                </div>
+            </div>
+
+            <div class="method-card" data-method="time">
+                <h2>Measuring Performance</h2>
+                <p>Measure execution time with console.time()</p>
+                <button>Try It</button>
+                <div class="code-snippet">
+                    <pre><code>console.time('Loop');
+for (let i = 0; i < 1000000; i++) {}
+console.timeEnd('Loop');</code></pre>
+                </div>
+            </div>
+
+            <div class="method-card" data-method="count">
+                <h2>Counting Function Calls</h2>
+                <p>Track how many times a function is called</p>
+                <button>Try It</button>
+                <div class="code-snippet">
+                    <pre><code>function greet() {
+  console.count('Greet called');
+  return 'Hello!';
+}
+// Click multiple times to see the counter increase</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Open Chrome DevTools to see the results (F12 or Ctrl+Shift+J)</p>
+        <p>Created for learning Chrome DevTools techniques</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
