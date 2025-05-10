@@ -1,0 +1,196 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f8fa;
+  padding: 40px;
+  color: #333;
+}
+
+.inbox {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.instructions {
+  margin: 0 0 15px 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+kbd {
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 0.8rem;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.add-task {
+  display: flex;
+  gap: 10px;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.add-task button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-task button:hover {
+  background-color: #43a047;
+}
+
+#clear-completed {
+  margin-top: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#clear-completed:hover {
+  background-color: #c0392b;
+}
+
+/* Existing styles remain unchanged */
+
+.edit-btn {
+  background: #3498db;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 0.8rem;
+  transition: background-color 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.edit-input {
+  display: none;
+  flex: 1;
+  font-size: 1rem;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.item.editing .text {
+  display: none;
+}
+
+.item.editing .edit-input {
+  display: block;
+} 
+
+/* Optional: add margin for buttons if layout gets tight */
+.item .edit-btn {
+  margin-left: auto;
+} 
+
+/* Add flex-wrap if needed for responsiveness */
+.item {
+  flex-wrap: wrap;
+} 
+
+
+.item {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #eee;
+}
+
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.item.in-between {
+  background-color: #f5fff5;
+  border-color: #e0f0e0;
+}
+
+.checkbox {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #888;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.checkbox:checked + .custom-checkbox {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.checkbox:checked + .custom-checkbox::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.text {
+  font-size: 1.1rem;
+  color: #333;
+  transition: all 0.2s;
+  flex: 1;
+}
+
+.text.line-through {
+  text-decoration: line-through;
+  color: #4caf50;
+  font-weight: 500;
+}

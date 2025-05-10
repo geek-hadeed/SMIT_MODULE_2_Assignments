@@ -1,103 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo-App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        #container {
-            max-width: 30rem;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        #todo-form {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        #todoText {
-            flex: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        #todo-form button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        #todo-form button:hover {
-            background-color: #555;
-        }
-
-        #todoList li button {
-            padding: 7px;
-            font-size: 14px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-left: 10px;
-        }
-
-        #todoList li .del {
-            background-color: red;
-            color: white;
-        }
-
-        #todoList li .edit {
-            background-color: green;
-            color: white;
-        }
-
-        #todoList {
-            list-style: none;
-            padding: 0;
-        }
-
-        #todoList li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <div id="container">
-        <h1>Todo-App</h1>
-        <form action="javascript:void(0)" id="todo-form" onsubmit="add()">
-            <input type="text" id="todoText" placeholder="Enter your todo">
-            <button type="submit">Add</button>
-        </form>
-        <ul id="todoList">
-        </ul>
-    </div>
-    <script src="app.js"></script>
-</body>
+  <div class="inbox">
+    <h1>To-Do List</h1>
+    <p class="instructions">
+      Pro tip: Hold <kbd>Shift</kbd> while clicking to select multiple items
+    </p>
 
+    <div class="add-task">
+      <input type="text" id="new-task" placeholder="Add new task..." />
+      <button id="add-btn">Add</button>
+    </div>
+
+    <div id="task-list"></div>
+
+    <button id="clear-completed">Delete Completed</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
 </html>
