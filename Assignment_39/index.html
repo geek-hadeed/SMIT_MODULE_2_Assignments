@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Finder</title>
+    <link rel="shortcut icon" href="github.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fab fa-github"></i>
+                <h1>GitHub Explorer</h1>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon" id="theme-icon"></i>
+            </div>
+        </header>
+
+        <main>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="username" placeholder="Search GitHub username..." autocomplete="off">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div class="error-message" id="error-message"></div>
+            </div>
+
+            <div class="profile-container" id="profile-container">
+                <div class="loader" id="loader">
+                    <div class="spinner"></div>
+                </div>
+                <div id="profile-content" class="hidden"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Created with <i class="fas fa-heart"></i> by GitHub Explorer</p>
+        </footer>
+    </div>
+</body>
+</html>
