@@ -4,22 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login/SignUp Page</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let loggedInUser = localStorage.getItem("loggedInUser");
-
-            if (loggedInUser) {
-                window.location.href = "home.html";
-            } else {
-                window.location.href = "login.html";
-            }
-        });
-    </script>
+    <title>Postboard App</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
 </head>
 
 <body>
     <p>Redirecting...</p>
+
+    <script>
+        // YOUR_FIREBASE_CONFIG: Replace with your actual Firebase project configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPCIVzR46zGWNgNZn1WYAC90yZK5ld2A8",
+            authDomain: "first-form-hh.firebaseapp.com",
+            projectId: "first-form-hh",
+            storageBucket: "first-form-hh.firebasestorage.app",
+            messagingSenderId: "968812560738",
+            appId: "1:968812560738:web:14ae3ffcd2ba69cc6dec3b",
+            measurementId: "G-L2XGTXSE11"
+        };
+
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // User is signed in.
+                    window.location.href = "home.html";
+                } else {
+                    // No user is signed in.
+                    window.location.href = "login.html";
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

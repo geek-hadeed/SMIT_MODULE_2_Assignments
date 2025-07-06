@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Now</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
     <style>
         /* General styling */
         body {
@@ -105,6 +108,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="form-container">
@@ -116,26 +120,18 @@
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
 
-            <label for="phone">Phone:</label>
-            <input type="tel" name="phone" id="phone" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" placeholder="e.g., 1234567890" required>
 
             <label>Gender:</label>
             <div class="gender-group">
-                <input type="radio" name="gender" id="radio-male" value="male" required>
-                <label for="radio-male">Male</label>
-
-                <input type="radio" name="gender" id="radio-female" value="female">
-                <label for="radio-female">Female</label>
-
-                <input type="radio" name="gender" id="radio-other" value="other">
-                <label for="radio-other">Other</label>
+                <label><input type="radio" name="gender" value="male" required> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
             </div>
-
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
 
             <button type="submit">Register</button>
 
@@ -144,31 +140,66 @@
     </div>
 
     <script>
+        // YOUR_FIREBASE_CONFIG: Replace with your actual Firebase project configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPCIVzR46zGWNgNZn1WYAC90yZK5ld2A8",
+            authDomain: "first-form-hh.firebaseapp.com",
+            projectId: "first-form-hh",
+            storageBucket: "first-form-hh.firebasestorage.app",
+            messagingSenderId: "968812560738",
+            appId: "1:968812560738:web:14ae3ffcd2ba69cc6dec3b",
+            measurementId: "G-L2XGTXSE11"
+        };
+
+
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in, redirect to home page
+                window.location.href = 'home.html';
+            }
+        });
+
         document.getElementById('register-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
             let name = document.getElementById('name').value;
             let email = document.getElementById('email').value;
-            let phone = document.getElementById('phone').value;
-            let gender = document.querySelector('input[name="gender"]:checked')?.value;
-            let username = document.getElementById('username').value;
             let password = document.getElementById('password').value;
+            let phone = document.getElementById('phone').value;
+            let gender = document.querySelector('input[name="gender"]:checked').value;
 
-            let users = JSON.parse(localStorage.getItem("users")) || [];
 
-            if (users.some(user => user.username === username)) {
-                alert("Username already taken. Choose another.");
-                return;
-            }
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
 
-            // Save new user
-            users.push({ name, email, phone, gender, username, password });
-            localStorage.setItem("users", JSON.stringify(users));
-
-            alert('Registration Successful!');
-
-            document.getElementById('register-form').reset();
-            window.location.href = 'login.html';
+                    // Update user profile with name and phone number
+                    return user.updateProfile({
+                        displayName: name,
+                        phoneNumber: phone // Note: Firebase Auth's updateProfile doesn't directly support phoneNumber. This would typically require a separate database (like Firestore) to store additional user details. For demonstration, we'll include it here, but it won't be directly stored in Firebase Auth's user object.
+                    }).then(() => {
+                        alert('Registration Successful! Please log in.');
+                        document.getElementById('register-form').reset();
+                        window.location.href = 'login.html';
+                    }).catch((profileError) => {
+                        console.error("Profile Update Error:", profileError);
+                        alert(`Registration successful, but profile update failed: ${profileError.message}`);
+                        window.location.href = 'login.html'; // Still redirect to login even if profile update fails
+                    });
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(`Registration failed: ${errorMessage}`);
+                    console.error("Registration Error:", errorCode, errorMessage);
+                });
         });
     </script>
 

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +47,7 @@
         label {
             text-align: left;
             font-weight: bold;
-            color:#202429;
+            color: #202429;
         }
 
         input {
@@ -90,11 +93,15 @@
     <div class="form-container">
         <h1>Login</h1>
         <form id="login-form">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
 
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
+
+            <label>
+                <input type="checkbox" id="remember-me"> Remember Me
+            </label>
 
             <button type="submit">Login</button>
 
@@ -103,26 +110,72 @@
     </div>
 
     <script>
+        // YOUR_FIREBASE_CONFIG: Replace with your actual Firebase project configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPCIVzR46zGWNgNZn1WYAC90yZK5ld2A8",
+            authDomain: "first-form-hh.firebaseapp.com",
+            projectId: "first-form-hh",
+            storageBucket: "first-form-hh.firebasestorage.app",
+            messagingSenderId: "968812560738",
+            appId: "1:968812560738:web:14ae3ffcd2ba69cc6dec3b",
+            measurementId: "G-L2XGTXSE11"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        // Check auth state and stored credentials
+        window.onload = function() {
+            // Redirect if already logged in
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    window.location.href = 'home.html';
+                }
+            });
+            const savedEmail = localStorage.getItem('email');
+            const savedPassword = localStorage.getItem('password');
+            const rememberMe = localStorage.getItem('rememberMe') === 'true';
+
+            if (rememberMe) {
+                document.getElementById('email').value = savedEmail || '';
+                document.getElementById('password').value = savedPassword || '';
+                document.getElementById('remember-me').checked = true;
+            }
+        };
+
         document.getElementById('login-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
-            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
-            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let rememberMe = document.getElementById('remember-me').checked;
 
-            let user = users.find(user => user.username === username);
-
-            if (user) {
-                if (user.password === password) {
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
                     alert('Login successful!');
-                    localStorage.setItem("loggedInUser", username);
+
+                    // Store email and password if "Remember Me" is checked
+                    if (rememberMe) {
+                        localStorage.setItem('email', email);
+                        localStorage.setItem('password', password);
+                        localStorage.setItem('rememberMe', true);
+                    } else {
+                        localStorage.removeItem('email');
+                        localStorage.removeItem('password');
+                        localStorage.setItem('rememberMe', false);
+                    }
+
                     window.location.href = 'home.html';
-                } else {
-                    alert('Incorrect password. Try again.');
-                }
-            } else {
-                alert('No account found. Please register first.');
-            }
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(`Login failed: ${errorMessage}`);
+                    console.error("Login Error:", errorCode, errorMessage);
+                });
         });
     </script>
 </body>

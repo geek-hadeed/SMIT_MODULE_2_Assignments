@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Postboard</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -118,6 +121,7 @@
             margin: 10px;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
+            position: relative;
         }
 
         .post-item:hover {
@@ -174,9 +178,8 @@
 
     <button id="create" onclick="display()">Create New Post</button>
 
-
     <div id="post-form">
-        <form action=" javascript:void(0)" onsubmit="post()" method="post">
+        <form action="javascript:void(0)" onsubmit="post()" method="post">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
             <br>
@@ -187,20 +190,34 @@
         </form>
     </div>
 
-
-
     <div id="posts">
         <h2>Posts</h2>
     </div>
 
     <button id="logout">Logout</button>
 
-
     <script>
+        // YOUR_FIREBASE_CONFIG: Replace with your actual Firebase project configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPCIVzR46zGWNgNZn1WYAC90yZK5ld2A8",
+            authDomain: "first-form-hh.firebaseapp.com",
+            projectId: "first-form-hh",
+            storageBucket: "first-form-hh.firebasestorage.app",
+            messagingSenderId: "968812560738",
+            appId: "1:968812560738:web:14ae3ffcd2ba69cc6dec3b",
+            measurementId: "G-L2XGTXSE11"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
         function display() {
             let form = document.getElementById('post-form');
             form.style.display = 'block';
         }
+
         function post() {
             const title = document.getElementById('title').value;
             const content = document.getElementById('content').value;
@@ -226,17 +243,27 @@
             form.style.display = 'none';
         }
 
-        let loggedInUser = localStorage.getItem('loggedInUser');
-        document.querySelector('h1').textContent = `Hello! ${loggedInUser}`;
-
-        let logout = document.getElementById('logout').addEventListener('click', function () {
-            window.location.href = 'login.html';
-            localStorage.removeItem('loggedInUser');
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                // Display user's name if available, otherwise email
+                document.querySelector('h1').textContent = `Hello! ${user.displayName || user.email}`;
+            } else {
+                // No user is signed in. Redirect to login.
+                window.location.href = 'login.html';
+            }
         });
 
-        if(!loggedInUser){
-            window.location.href = 'login.html';
-        }
+        document.getElementById('logout').addEventListener('click', function () {
+            firebase.auth().signOut().then(() => {
+                // Sign-out successful.
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                // An error happened.
+                console.error("Logout Error:", error);
+                alert("Logout failed. Please try again.");
+            });
+        });
 
     </script>
 
