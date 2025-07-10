@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - SMIT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h2>Student Dashboard</h2>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+        
+        <div class="dashboard-content">
+            <div class="welcome-section">
+                <h3>Welcome, <span id="studentName">Student</span>!</h3>
+                <p>Here are your registration details:</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Personal Information</h4>
+                    <div class="info-item">
+                        <span class="label">Name:</span>
+                        <span class="value" id="displayName">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Father's Name:</span>
+                        <span class="value" id="displayFatherName">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Email:</span>
+                        <span class="value" id="displayEmail">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Phone:</span>
+                        <span class="value" id="displayPhone">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Gender:</span>
+                        <span class="value" id="displayGender">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Date of Birth:</span>
+                        <span class="value" id="displayDob">-</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h4>Course Information</h4>
+                    <div class="info-item">
+                        <span class="label">Course:</span>
+                        <span class="value" id="displayCourse">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Proficiency:</span>
+                        <span class="value" id="displayProficiency">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Country:</span>
+                        <span class="value" id="displayCountry">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">City:</span>
+                        <span class="value" id="displayCity">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Address:</span>
+                        <span class="value" id="displayAddress">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js" type="module"></script>
+</body>
+</html>

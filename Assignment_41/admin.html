@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Student Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2>Admin Panel - Student Management</h2>
+            <button class="logout-btn" id="adminLogoutBtn">Logout</button>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3 id="totalStudents">0</h3>
+                <p>Total Students</p>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table class="student-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Course</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                    <!-- Student data will be loaded here -->
+                </tbody>
+            </table>
+            <p id="noDataMessage" class="no-data" style="display: none;">No student data available.</p>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Student</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="editForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="editName">Name:</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email:</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPhone">Phone:</label>
+                        <input type="tel" id="editPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCourse">Course:</label>
+                        <select id="editCourse" required>
+                            <option value="web-development">Web Development</option>
+                            <option value="mobile-app">Mobile App Development</option>
+                            <option value="graphic-design">Graphic Design</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCity">City:</label>
+                        <select id="editCity" required>
+                            <option value="karachi">Karachi</option>
+                            <option value="lahore">Lahore</option>
+                            <option value="islamabad">Islamabad</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCountry">Country:</label>
+                        <select id="editCountry" required>
+                            <option value="pakistan">Pakistan</option>
+                            <option value="india">India</option>
+                            <option value="bangladesh">Bangladesh</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-success">Save Changes</button>
+                    <button type="button" class="btn-secondary" id="cancelEdit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js" type="module"></script>
+</body>
+</html>
