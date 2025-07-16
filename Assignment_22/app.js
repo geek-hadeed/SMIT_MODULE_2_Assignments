@@ -1,29 +1,56 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCKzOCgzgQxs-uOdjD1RwYeEetH0gazbqY",
+  authDomain: "todo-app-hh.firebaseapp.com",
+  projectId: "todo-app-hh",
+  storageBucket: "todo-app-hh.firebasestorage.app",
+  messagingSenderId: "25739824065",
+  appId: "1:25739824065:web:e5f21b62f234f44beafd40",
+  measurementId: "G-HMQ2LG95E1"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app); // ✅ only declare once
+
 const taskList = document.getElementById('task-list');
 const addBtn = document.getElementById('add-btn');
 const newTaskInput = document.getElementById('new-task');
 const clearCompletedBtn = document.getElementById('clear-completed');
 
 let lastChecked;
+const tasksRef = collection(db, "tasks");
 
-// Load tasks from localStorage
-window.onload = () => {
-  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  tasks.forEach(task => addTask(task.text, task.checked));
+// Fetch tasks from Firestore
+window.onload = async () => {
+  const snapshot = await getDocs(tasksRef);
+  snapshot.forEach(docSnap => {
+    const data = docSnap.data();
+    addTask(docSnap.id, data.text, data.checked);
+  });
 };
 
-function saveTasks() {
-  const tasks = [];
-  document.querySelectorAll('.item').forEach(item => {
-    const checkbox = item.querySelector('.checkbox');
-    const text = item.querySelector('.text').textContent;
-    tasks.push({ text, checked: checkbox.checked });
+async function saveTaskToFirebase(id, updatedText, checked) {
+  await updateDoc(doc(db, "tasks", id), {
+    text: updatedText,
+    checked: checked
   });
-  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-function addTask(text, checked = false) {
+async function addTaskToFirebase(text) {
+  const docRef = await addDoc(tasksRef, { text, checked: false });
+  return docRef.id;
+}
+
+async function deleteTaskFromFirebase(id) {
+  await deleteDoc(doc(db, "tasks", id));
+}
+
+function addTask(id, text, checked = false) {
   const label = document.createElement('label');
   label.className = 'item';
+  label.dataset.id = id;
   label.innerHTML = `
     <input type="checkbox" class="checkbox" ${checked ? 'checked' : ''} />
     <span class="custom-checkbox"></span>
@@ -39,10 +66,13 @@ function addTask(text, checked = false) {
   const editInput = label.querySelector('.edit-input');
   const textSpan = label.querySelector('.text');
 
-  checkbox.addEventListener('change', handleCheck);
+  checkbox.addEventListener('change', async (e) => {
+    updateTextStyle(checkbox);
+    await saveTaskToFirebase(label.dataset.id, textSpan.textContent, checkbox.checked);
+  });
   updateTextStyle(checkbox);
 
-  editBtn.addEventListener('click', (e) => {
+  editBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     const isEditing = label.classList.contains('editing');
     if (!isEditing) {
@@ -53,7 +83,7 @@ function addTask(text, checked = false) {
       label.classList.remove('editing');
       textSpan.textContent = editInput.value;
       editInput.style.display = 'none';
-      saveTasks();
+      await saveTaskToFirebase(label.dataset.id, editInput.value, checkbox.checked);
     }
   });
 }
@@ -67,41 +97,21 @@ function updateTextStyle(checkbox) {
   }
 }
 
-function handleCheck(e) {
-  const checkboxes = document.querySelectorAll('.checkbox');
-  let inBetween = false;
-
-  if (e.shiftKey && this.checked) {
-    checkboxes.forEach(checkbox => {
-      if (checkbox === this || checkbox === lastChecked) {
-        inBetween = !inBetween;
-      }
-      if (inBetween) {
-        checkbox.checked = true;
-        updateTextStyle(checkbox);
-        checkbox.closest('.item').classList.add('in-between');
-        setTimeout(() => checkbox.closest('.item').classList.remove('in-between'), 500);
-      }
-    });
-  }
-  updateTextStyle(this);
-  lastChecked = this;
-  saveTasks();
-}
-
-addBtn.addEventListener('click', () => {
+addBtn.addEventListener('click', async () => {
   const text = newTaskInput.value.trim();
   if (!text) return;
-  addTask(text);
+  const id = await addTaskToFirebase(text);
+  addTask(id, text);
   newTaskInput.value = '';
-  saveTasks();
 });
 
-clearCompletedBtn.addEventListener('click', () => {
-  document.querySelectorAll('.checkbox:checked').forEach(checkbox => {
-    checkbox.closest('.item').remove();
-  });
-  saveTasks();
+clearCompletedBtn.addEventListener('click', async () => {
+  const checkboxes = document.querySelectorAll('.checkbox:checked');
+  for (const checkbox of checkboxes) {
+    const item = checkbox.closest('.item');
+    await deleteTaskFromFirebase(item.dataset.id);
+    item.remove();
+  }
 });
 
 document.addEventListener('keydown', e => {
