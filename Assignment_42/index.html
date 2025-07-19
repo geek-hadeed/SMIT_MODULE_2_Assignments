@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub UserGuide</title>
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #020817;
+            --card: #ffffff;
+            --card-foreground: #020817;
+            --popover: #ffffff;
+            --popover-foreground: #020817;
+            --primary: #020817;
+            --primary-foreground: #f9fafb;
+            --secondary: #f1f5f9;
+            --secondary-foreground: #0f172a;
+            --muted: #f1f5f9;
+            --muted-foreground: #64748b;
+            --accent: #f1f5f9;
+            --accent-foreground: #0f172a;
+            --destructive: #ef4444;
+            --destructive-foreground: #f9fafb;
+            --border: #e2e8f0;
+            --input: #e2e8f0;
+            --ring: #020817;
+            --radius: 0.5rem;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background);
+            color: var(--foreground);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .step {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: var(--background);
+        }
+
+        .step.hidden {
+            display: none;
+        }
+
+        .step p {
+            margin-bottom: 15px;
+        }
+
+        .step pre {
+            background-color: var(--secondary);
+            color: var(--secondary-foreground);
+            padding: 15px;
+            border-radius: var(--radius);
+            overflow-x: auto;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .step pre code {
+            display: block;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.8em;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.8;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .copy-btn:hover {
+            opacity: 1;
+        }
+
+        .copy-btn:active {
+            background-color: #0f172a; /* A slightly darker primary */
+        }
+
+        .button {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s ease-in-out;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #0f172a; /* A slightly darker primary */
+        }
+
+        .button.secondary {
+            background-color: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+
+        .button.secondary:hover {
+            background-color: #e2e8f0;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: var(--muted);
+            border-radius: var(--radius);
+            height: 10px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar #progress {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary);
+            border-radius: var(--radius);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .navigation-buttons button {
+            flex: 1;
+            margin: 0 5px;
+        }
+
+        .navigation-buttons button:first-child {
+            margin-left: 0;
+        }
+
+        .navigation-buttons button:last-child {
+            margin-right: 0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .navigation-buttons {
+                flex-direction: column;
+            }
+            .navigation-buttons button {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Push Your Code to GitHub: Baby Steps</h1>
+            <p>A super simple guide to get your projects online!</p>
+        </header>
+
+        <div id="steps-container">
+            <!-- Step 1 -->
+            <div class="step" id="step-1">
+                <h2>Step 1: What are Git and GitHub?</h2>
+                <p>Think of <strong>Git</strong> as a magical tool that keeps track of all the changes you make to your code. It's like having an "undo" button for your entire project, and you can see who changed what and when.</p>
+                <p><strong>GitHub</strong> is like a giant online storage space for your Git projects. It's where you can share your code with others, collaborate, and show off your work to the world!</p>
+                <p>Ready to get started?</p>
+                <div class="navigation-buttons">
+                    <button class="button" onclick="showNextStep(2)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step hidden" id="step-2">
+                <h2>Step 2: Install Git on Your Computer</h2>
+                <p>Before we can use Git, you need to install it. It's free and easy!</p>
+                <p>Go to the official Git website and download the version for your operating system (Windows, macOS, Linux). Follow their installation instructions.</p>
+                <p><a href="https://git-scm.com/downloads" target="_blank" class="button secondary">Download Git Here</a></p>
+                <p>Once installed, you might need to restart your computer or terminal.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(1)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(3)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step hidden" id="step-3">
+                <h2>Step 3: Open Your Terminal or Command Prompt</h2>
+                <p>This is where you'll type Git commands. It's a text-based interface for your computer.</p>
+                <ul>
+                    <li><strong>Windows:</strong> Search for "Command Prompt" or "PowerShell".</li>
+                    <li><strong>macOS:</strong> Search for "Terminal".</li>
+                    <li><strong>Linux:</strong> Look for "Terminal" in your applications.</li>
+                </ul>
+                <p>Open it up! It will look like a black or white window with text.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(2)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(4)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step hidden" id="step-4">
+                <h2>Step 4: Navigate to Your Project Folder</h2>
+                <p>You need to tell Git which folder your project is in. Use the `cd` (change directory) command.</p>
+                <p>Replace `your/project/path` with the actual path to your project folder (e.g., `C:\Users\YourName\Documents\MyWebsite` or `/Users/YourName/Documents/MyWebsite`).</p>
+                <pre><code id="code-4">cd your/project/path</code><button class="copy-btn" onclick="copyCode('code-4')">Copy</button></pre>
+                <p>Press Enter after typing the command.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(3)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(5)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step hidden" id="step-5">
+                <h2>Step 5: Initialize Git in Your Project</h2>
+                <p>This command tells Git to start tracking changes in your current folder. You only do this once per project.</p>
+                <pre><code id="code-5">git init</code><button class="copy-btn" onclick="copyCode('code-5')">Copy</button></pre>
+                <p>You should see a message like "Initialized empty Git repository in..."</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(4)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(6)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step hidden" id="step-6">
+                <h2>Step 6: Stage Your Files</h2>
+                <p>Before Git saves your changes, you need to tell it which files you want to include in the next "snapshot" (commit). This is called "staging."</p>
+                <p>The `.` means "all files" in the current directory. If you only want to add specific files, you can replace `.` with `filename.html` or `folder/another-file.js`.</p>
+                <pre><code id="code-6">git add .</code><button class="copy-btn" onclick="copyCode('code-6')">Copy</button></pre>
+                <p>Press Enter. Nothing might appear, but Git has prepared your files.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(5)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(7)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step hidden" id="step-7">
+                <h2>Step 7: Commit Your Changes</h2>
+                <p>Now, let's save a snapshot of your staged files. This is called a "commit." Every commit needs a message explaining what changes you made.</p>
+                <p>The `-m` stands for "message." Make your message short and descriptive!</p>
+                <pre><code id="code-7">git commit -m "First commit"</code><button class="copy-btn" onclick="copyCode('code-7')">Copy</button></pre>
+                <p>Press Enter. You'll see details about the files committed.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(6)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(8)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step hidden" id="step-8">
+                <h2>Step 8: Create a New Repository on GitHub</h2>
+                <p>Now, let's make a home for your project on GitHub!</p>
+                <ol>
+                    <li>Go to <a href="https://github.com/" target="_blank">github.com</a> and sign in (or create an account).</li>
+                    <li>On the left sidebar, click the green "New" button (or the "+" icon in the top right and select "New repository").</li>
+                    <li><strong>Repository name:</strong> Type a name for your project (e.g., `my-first-website`).</li>
+                    <li><strong>Description (optional):</strong> Add a short description.</li>
+                    <li>Choose <strong>Public</strong> or <strong>Private</strong>. Public means anyone can see it; Private means only you and people you invite can see it.</li>
+                    <li><strong>IMPORTANT:</strong> Do NOT check "Add a README file", "Add .gitignore", or "Choose a license" at this stage. We'll add our own files.</li>
+                    <li>Click the green "Create repository" button.</li>
+                </ol>
+                <p>After creating, you'll see a page with instructions. Look for the section that says "…or push an existing repository from the command line". We'll use the next two commands from there.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(7)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(9)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="step hidden" id="step-9">
+                <h2>Step 9: Connect Your Local Project to GitHub</h2>
+                <p>This command tells your local Git project where its online home (the GitHub repository) is. You'll find this command on the GitHub page you just created.</p>
+                <p>Replace `<YOUR_REPOSITORY_URL>` with the actual URL provided by GitHub (it usually looks like `https://github.com/YourUsername/your-repo-name.git`).</p>
+                <pre><code id="code-9">git remote add origin &lt;YOUR_REPOSITORY_URL&gt;</code><button class="copy-btn" onclick="copyCode('code-9')">Copy</button></pre>
+                <p>Press Enter. `origin` is just a common nickname for your main remote repository.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(8)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(10)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="step hidden" id="step-10">
+                <h2>Step 10: Push Your Code to GitHub!</h2>
+                <p>This is the big moment! This command sends all your committed changes from your computer to your GitHub repository.</p>
+                <ul>
+                    <li>`push` means send.</li>
+                    <li>`-u` sets up a connection so you don't have to type `origin main` every time you push.</li>
+                    <li>`origin` is the nickname for your GitHub repo.</li>
+                    <li>`main` (or `master`) is the name of your main branch.</li>
+                </ul>
+                <pre><code id="code-10">git push -u origin main</code><button class="copy-btn" onclick="copyCode('code-10')">Copy</button></pre>
+                <p>Press Enter. If it's your first time, you might be asked to log in to GitHub.</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(9)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(11)">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 11 -->
+            <div class="step hidden" id="step-11">
+                <h2>Step 11: Verify on GitHub</h2>
+                <p>Go back to your GitHub repository page in your web browser. Refresh the page.</p>
+                <p>You should now see all your files and folders from your project! Congratulations, you've successfully pushed your code to GitHub!</p>
+                <p>Your project is now online and version-controlled!</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(10)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(12)">What's Next?</button>
+                </div>
+            </div>
+
+            <!-- Step 12 -->
+            <div class="step hidden" id="step-12">
+                <h2>Step 12: What's Next? (More Baby Steps)</h2>
+                <p>You've mastered the basics! Here are a few more useful commands:</p>
+                <h3>Check Status:</h3>
+                <p>See what files have been changed, added, or are untracked.</p>
+                <pre><code id="code-12a">git status</code><button class="copy-btn" onclick="copyCode('code-12a')">Copy</button></pre>
+                <h3>Pull Changes:</h3>
+                <p>If you're working with others, or on another computer, use this to get the latest changes from GitHub.</p>
+                <pre><code id="code-12b">git pull origin main</code><button class="copy-btn" onclick="copyCode('code-12b')">Copy</button></pre>
+                <h3>Repeat the Cycle:</h3>
+                <p>Whenever you make changes to your code, repeat these steps:</p>
+                <ol>
+                    <li><code>git add .</code> (Stage your new changes)</li>
+                    <li><code>git commit -m "Your descriptive message"</code> (Save the snapshot)</li>
+                    <li><code>git push origin main</code> (Send to GitHub)</li>
+                </ol>
+                <p>Keep practicing, and you'll be a Git pro in no time!</p>
+                <div class="navigation-buttons">
+                    <button class="button secondary" onclick="showNextStep(11)">Previous Step</button>
+                    <button class="button" onclick="showNextStep(1)">Start Over</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 12;
+
+        function showNextStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.add('hidden');
+            });
+
+            // Show the requested step
+            const targetStep = document.getElementById(`step-${stepNumber}`);
+            if (targetStep) {
+                targetStep.classList.remove('hidden');
+                currentStep = stepNumber;
+                updateProgressBar();
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+            }
+        }
+
+        function updateProgressBar() {
+            const progressElement = document.getElementById('progress');
+            const percentage = (currentStep / totalSteps) * 100;
+            progressElement.style.width = `${percentage}%`;
+        }
+
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const textToCopy = codeElement.textContent;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const button = codeElement.nextElementSibling; // Get the copy button
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 1500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy code. Please copy manually.');
+            });
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showNextStep(1);
+        });
+    </script>
+</body>
