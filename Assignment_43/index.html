@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MongoDB Starter Guide</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: #161b22;
+      --text: #e6edf3;
+      --accent: #13aa52;
+      --muted: #8b949e;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--accent);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      z-index: 10;
+    }
+    .layout {
+      display: flex;
+      width: 100%;
+      margin-top: 60px;
+    }
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: var(--panel);
+      padding: 1rem;
+      overflow-y: auto;
+      border-right: 1px solid #222;
+    }
+    .sidebar h3 {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      padding: 0.6rem;
+      margin-bottom: 0.3rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .sidebar li:hover { background: #222; }
+    .sidebar li.active {
+      background: var(--accent);
+      color: #fff;
+      font-weight: bold;
+    }
+    /* Main content */
+    .content {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    .step {
+      display: none;
+      max-width: 850px;
+      margin: auto;
+      animation: fadeIn 0.4s;
+    }
+    .step.active { display: block; }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    h2 { margin-top: 0; }
+    .code {
+      background: #1c2128;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: monospace;
+      position: relative;
+      white-space: pre-wrap;
+      border: 1px solid #2d333b;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #333;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+    /* Controls */
+    .controls {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: 0.2s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn.ghost { background: #333; }
+  </style>
+</head>
+<body>
+  <header>🌱 MongoDB Starter Guide</header>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Steps</h3>
+      <ul id="sidebarList"></ul>
+    </aside>
+
+    <!-- Content -->
+    <main class="content" id="stepsContainer"></main>
+  </div>
+
+<script>
+const stepsData = [
+  { title: "Create an Atlas Account",
+    content: `Go to https://cloud.mongodb.com and create a free account.
+You’ll use MongoDB Atlas (the official cloud service).` },
+  { title: "Build a Free Cluster",
+    content: `After logging in, click "Build a Cluster".
+Choose:
+- Free tier (Shared Cluster)
+- Cloud provider: AWS, Azure, or GCP
+- Region close to you
+Then click Create Cluster.` },
+  { title: "Create a Database User",
+    content: `Atlas requires authentication. 
+1. In Security → Database Access → Add New Database User.
+2. Enter a username and password (remember them!).
+3. Give role: Atlas Admin (for learning).` },
+  { title: "Allow IP Access",
+    content: `Atlas blocks connections unless you allow IPs.
+1. In Security → Network Access → Add IP.
+2. Add your current IP (or 0.0.0.0/0 for open access, not recommended for production).` },
+  { title: "Get Connection URI",
+    content: `Go to your cluster → Connect → Connect your application.
+Copy the connection string (URI). Example:`,
+    code: `mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority` },
+  { title: "Connect with MongoDB Compass",
+    content: `MongoDB Compass is a free GUI to explore your data.
+1. Download from https://www.mongodb.com/try/download/compass
+2. Open Compass and paste your connection URI.
+3. Click Connect.
+Now you can view databases, collections, and documents visually.` },
+  { title: "Install Node.js Driver",
+    content: `In your Node.js project, install the official MongoDB driver:`,
+    code: `npm install mongodb` },
+  { title: "Connect with Node.js",
+    content: `Use the connection string in your Node.js code:`,
+    code: `const { MongoClient } = require("mongodb");
+
+const uri = "your-connection-uri";
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB!");
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir);` },
+  { title: "Create Database & Collection",
+    content: `Once connected, you can create a database and collection:`,
+    code: `const db = client.db("myDatabase");
+const users = db.collection("users");` },
+  { title: "Insert Documents",
+    content: `Insert one or multiple documents:`,
+    code: `await users.insertOne({ name: "Alice", age: 25 });
+await users.insertMany([
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 22 }
+]);` },
+  { title: "Query Documents",
+    content: `Find documents with a query:`,
+    code: `const result = await users.find({ age: { $gt: 20 } }).toArray();
+console.log(result);` },
+  { title: "Update Documents",
+    content: `Update documents with update operators:`,
+    code: `await users.updateOne(
+  { name: "Alice" },
+  { $set: { age: 26 } }
+);` },
+  { title: "Delete Documents",
+    content: `Remove documents:`,
+    code: `await users.deleteOne({ name: "Charlie" });` },
+  { title: "Next Steps",
+    content: `You now know how to:
+- Create cluster
+- Connect with Compass
+- Connect with Node.js
+- Perform CRUD operations
+
+👉 Next: Learn MongoDB aggregation, indexes, schema design.  
+See docs: https://www.mongodb.com/docs/` }
+];
+
+let currentStep = 0;
+const stepsContainer = document.getElementById("stepsContainer");
+const sidebarList = document.getElementById("sidebarList");
+
+// render sidebar + steps
+stepsData.forEach((step,i)=>{
+  // sidebar
+  const li = document.createElement("li");
+  li.innerText = step.title;
+  li.addEventListener("click", ()=> { currentStep=i; showStep(i); });
+  sidebarList.appendChild(li);
+
+  // steps
+  const div = document.createElement("div");
+  div.className = "step";
+  div.id = "step"+i;
+  div.innerHTML = `
+    <h2>${step.title}</h2>
+    <p>${step.content.replace(/\n/g,"<br>")}</p>
+    ${step.code ? `<div class="code"><button class="copy-btn" onclick="copyCode('code${i}')">Copy</button><pre id="code${i}">${step.code}</pre></div>` : ""}
+    <div class="controls">
+      ${i>0 ? `<button class="btn ghost" onclick="prevStep()">Previous</button>`:""}
+      <button class="btn" onclick="nextStep()">${i===stepsData.length-1?"Finish":"Next"}</button>
+    </div>
+  `;
+  stepsContainer.appendChild(div);
+});
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach((s,i)=>{
+    s.classList.remove('active');
+    if(i===n) s.classList.add('active');
+  });
+  document.querySelectorAll('.sidebar li').forEach((li,i)=>{
+    li.classList.remove('active');
+    if(i===n) li.classList.add('active');
+  });
+}
+
+function nextStep() {
+  if(currentStep<stepsData.length-1) { currentStep++; showStep(currentStep); }
+  else alert("🎉 You're ready to start with MongoDB!");
+}
+function prevStep() {
+  if(currentStep>0) { currentStep--; showStep(currentStep); }
+}
+
+function copyCode(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=> alert("Copied!"));
+}
+
+showStep(currentStep);
+</script>
+</body>
+</html>
